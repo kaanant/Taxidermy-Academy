@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/index', 'IndexController@index');
+
+Route::get('/admin', 'AdminController@login');
