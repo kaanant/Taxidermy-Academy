@@ -63,8 +63,8 @@
                 <div class="product-one">
                     <div class="col-md-3 product-left">
                         <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png"
-                                                                    alt=""/></a>
+                            <a href="single.html" class="mask">
+                            <img class="img-responsive zoom-img" src="images/p-1.png" alt=""/></a>
                             <div class="product-bottom">
                                 <h3>Smart Watches</h3>
                                 <p>Explore Now</p>

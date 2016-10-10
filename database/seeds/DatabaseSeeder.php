@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('categories')->truncate();
+        DB::table('products')->truncate();
+
+        factory(App\Category::class, 5)->create();
+        factory(App\Product::class,10)->create();
     }
 }
