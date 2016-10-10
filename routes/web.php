@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Route::get('/index', 'IndexController@index');
 
-Route::get('/admin', 'AdminController@login');
+Route::get('/admin', 'AuthController@login');
+Route::get('/admin/index', 'IndexController@dashboard');
+
+Route::resource('/admin/products', 'ProductController');

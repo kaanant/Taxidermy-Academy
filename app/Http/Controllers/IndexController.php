@@ -14,4 +14,11 @@ class IndexController extends Controller
         $categories = $categoryModel->all();
         return view('index',['categories'=>$categories]);
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    function dashboard(){
+        return view('admin.dashboard');
+    }
 }
