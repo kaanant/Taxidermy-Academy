@@ -13,8 +13,9 @@ class ProductController extends Controller
 
     }
 
-    function show(Product $product){
-        return view('product.show', compact($product));
+    function index(Product $product){
+        $products = $product->all();
+        return view('admin.product.index', compact($products));
     }
 
 }

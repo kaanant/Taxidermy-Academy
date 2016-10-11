@@ -17,6 +17,8 @@
     <script src="/js/respond.min.js"></script>
     <![endif]-->
 
+    @yield('header')
+
 </head>
 
 <body>
@@ -52,16 +54,27 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li class="active"><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Kontrol Paneli</a></li>
-        <li><a href="widgets.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Ürünler</a></li>
-        <li><a href="charts.html"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Siparişler</a></li>
-        <li><a href="tables.html"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg> Kategoriler</a></li>
-        <li><a href="forms.html"><svg class="glyph stroked tag"><use xlink:href="#stroked-tag"></use></svg> Etiketler</a></li>
+        <li class="active"><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Kontrol Paneli</a></li>
+        <li><a href="products"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Ürünler</a></li>
+        <li><a href="orders"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Siparişler</a></li>
+        <li><a href="categories"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg> Kategoriler</a></li>
+        <li><a href="tags"><svg class="glyph stroked tag"><use xlink:href="#stroked-tag"></use></svg> Etiketler</a></li>
     </ul>
 
 </div><!--/.sidebar-->
 
-@yield('content')
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active">Icons</li>
+        </ol>
+    </div><!--/.row-->
+
+    @yield('content')
+
+</div>
+
 
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -70,6 +83,8 @@
 <script src="/js/easypiechart.js"></script>
 <script src="/js/easypiechart-data.js"></script>
 <script src="/js/bootstrap-datepicker.js"></script>
+
+@yield('scripts')
 
 </body>
 
