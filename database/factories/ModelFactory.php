@@ -29,10 +29,12 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
-        'price' => $faker->randomNumber(),
-        'discount' =>$faker->randomNumber(),
-        'product_key' =>$faker->unique()->randomKey(),
+        'price' => $faker->numberBetween(50,200),
+        'stock'=>$faker->numberBetween(0,5),
+        'discount' =>$faker->numberBetween(0,100),
+        'product_quality' => $faker->numberBetween(1,3),
+        'product_key' =>$faker->unique()->jobTitle(),
         'brand' =>$faker->company,
-        'category_id'=>$faker->numberBetween(1,10)
+        'category_id'=>$faker->numberBetween(1,5)
     ];
 });
