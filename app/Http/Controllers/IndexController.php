@@ -21,4 +21,11 @@ class IndexController extends Controller
     function dashboard(){
         return view('admin.dashboard');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    function dashboard(){
+        return view('admin.dashboard');
+    }
 }
