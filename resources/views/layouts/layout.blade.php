@@ -54,7 +54,7 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li><a href="index"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Kontrol Paneli</a></li>
+        <li class="{{ setActive('admin/index', $request) }}"><a href="{{ action("Admin\\DashController@index") }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Kontrol Paneli</a></li>
         <li class="{{ setActive('admin/products', $request) }}"><a href="{{ action("Admin\\ProductController@index") }}"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Ürünler</a></li>
         <li><a href="orders"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Siparişler</a></li>
         <li><a href="categories"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg> Kategoriler</a></li>

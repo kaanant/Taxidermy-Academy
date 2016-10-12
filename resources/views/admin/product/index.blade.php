@@ -2,7 +2,7 @@
 
 @section('header')
 
-    <link href="/css/bootstrap-table.css" rel="stylesheet">
+    <link href="/css/docs.min.css" rel="stylesheet">
 
 @stop
 
@@ -18,25 +18,33 @@
     </div><!--/.row-->
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Advanced Table</div>
-                <div class="panel-body">
-                    <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-                        <thead>
+                <!-- Default panel contents -->
+                <div class="panel-heading">Panel heading</div>
+
+                <!-- Table -->
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true" >Item ID</th>
-                            <th data-field="id" data-sortable="true">Item ID</th>
-                            <th data-field="name"  data-sortable="true">Item Name</th>
-                            <th data-field="price" data-sortable="true">Item Price</th>
+                            <th>kalsjda</th>
+                            <th>kalsjda</th>
+                            <th>kalsjdas</th>
                         </tr>
-                        </thead>
-                    </table>
-                </div>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>fasikül</th>
+                            <th>fasikül</th>
+                            <th>fasikül</th>
+
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div><!--/.row-->
-
+    </div>
 @stop
 
 
