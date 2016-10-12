@@ -71,6 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                     </ul>
                 </div>
+                <hr>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-3 header-right">
@@ -84,6 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 </div>
+
 <!--bottom-header-->
 <!--banner-starts-->
 <div class="container">
