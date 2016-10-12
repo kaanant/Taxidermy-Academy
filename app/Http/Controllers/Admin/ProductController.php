@@ -12,8 +12,12 @@ class ProductController extends Controller
 
     }
 
+    function destroy(Product $product){
+        $product->delete();
+    }
+
     function index(Product $product){
         $products = $product->all();
-        return view('admin.product.index', compact($products));
+        return view('admin.product.index', ['products' => $products]);
     }
 }
