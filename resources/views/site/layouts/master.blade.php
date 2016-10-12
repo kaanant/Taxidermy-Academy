@@ -156,6 +156,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--Slider-Starts-Here-->
 
 @include('site.layouts.corescripts')
+@yield('footer')
 
 <!--End-slider-script-->
 <!--footer-end-->

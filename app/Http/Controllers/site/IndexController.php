@@ -15,9 +15,11 @@ class IndexController extends Controller
 
         $categories = $categoryModel->all();
         $latestProducts =DB::table('products')->orderBy('updated_at','desc')->take(3)->get();
+        $discountedProducts=DB::table('products')->where('discount','>',0)->orderBy('discount','desc')->get();
 
         return view('site/index',
             ['categories'=>$categories, 
-             'latest_products'=>$latestProducts]);
+             'latest_products'=>$latestProducts,
+             'discounted_products'=>$discountedProducts]);
     }
 }

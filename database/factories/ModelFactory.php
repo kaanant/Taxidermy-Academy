@@ -29,6 +29,7 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
+        'name'=>$faker->name(),
         'price' => $faker->numberBetween(50,200),
         'stock'=>$faker->numberBetween(0,5),
         'discount' =>$faker->numberBetween(0,100),

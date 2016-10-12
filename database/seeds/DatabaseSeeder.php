@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->truncate();
-        //DB::table('products')->truncate();
+        DB::table('products')->truncate();
 
         factory(App\Category::class, 5)->create();
         factory(App\Product::class,10)->create();
