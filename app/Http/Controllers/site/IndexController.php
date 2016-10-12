@@ -18,6 +18,6 @@ class IndexController extends Controller
 
         return view('site/index',
             ['categories'=>$categories, 
-             'products'=>$latestProducts]);
+             'latest_products'=>$latestProducts]);
     }
 }

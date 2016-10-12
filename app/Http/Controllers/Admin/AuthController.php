@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminAuthController extends Controller
+class AuthController extends Controller
 {
     function login(){
         return view('admin.login');
