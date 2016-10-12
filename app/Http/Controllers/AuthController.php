@@ -8,7 +8,5 @@ use App\Http\Requests;
 
 class AuthController extends Controller
 {
-    function login(){
-        return view('admin.login');
-    }
+    
 }

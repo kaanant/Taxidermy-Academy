@@ -9,13 +9,5 @@ use App\Http\Requests;
 
 class ProductController extends Controller
 {
-    function create(Request $request){
-
-    }
-
-    function index(Product $product){
-        $products = $product->all();
-        return view('admin.product.index', compact($products));
-    }
 
 }

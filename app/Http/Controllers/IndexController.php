@@ -17,17 +17,5 @@ class IndexController extends Controller
         $latestProducts =DB::table('products')->orderBy('updated_at','desc')->take(5)->get();
         dd($latestProducts);
         return view('index',['categories'=>$categories]);
-
     }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    function dashboard(){
-        return view('admin.dashboard');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
 }
