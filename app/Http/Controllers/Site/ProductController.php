@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    function showproducts(Category $categoryModel){
+    function showproducts(Request $request, Category $categoryModel, Product $productModel){
+
         $categories = $categoryModel->all();
-        return(view('site/show_products',['categories'=>$categories])
-        );
+        $products = $productModel->paginate(12);
+        
+        return view('site/show_products',['categories'=>$categories,'products'=>$products]);
     }
 }

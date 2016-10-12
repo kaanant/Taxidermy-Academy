@@ -25,6 +25,8 @@ Route::group(['namespace' => 'Admin'], function() {
 Route::group(['namespace' => 'Site'], function(){
     
     Route::get('/index', 'IndexController@index');
+    Route::get('/products','ProductController@showproducts');
+    //Route::get('/products')
 
 });
 
