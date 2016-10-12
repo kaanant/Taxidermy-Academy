@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
     <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
-    @include('layouts.stylesheets')
+    @include('site.layouts.stylesheets')
 
 </head>
 <body>
@@ -44,7 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="{{action('IndexController@index')}}">Home</a></li>
+                        <li class="active"><a href="{{action('Site\IndexController@index')}}">Home</a></li>
                         <li class="grid"><a href="#">Kategoriler</a>
                             <div class="mepanel">
                                 <div class="row">
@@ -155,7 +155,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 <!--Slider-Starts-Here-->
 
-@include('layouts.corescripts')
+@include('site.layouts.corescripts')
 
 <!--End-slider-script-->
 <!--footer-end-->

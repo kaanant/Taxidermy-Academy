@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-
-class AdminProductController extends Controller
+class ProductController extends Controller
 {
     function create(Request $request){
 

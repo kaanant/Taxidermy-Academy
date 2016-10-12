@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['namespace' => 'Admin'], function() {
+    Route::get('/admin', 'AuthController@login');
+    Route::get('/admin/index', 'DashController@dashboard');
+
+    Route::resource('/admin/products', 'ProductController');
 });
 
-Route::get('/index', 'IndexController@index');
+Route::group(['namespace' => 'Site'], function(){
+    
+    Route::get('/index', 'IndexController@index');
 
-Route::get('/admin', 'AdminAuthController@login');
-Route::get('/admin/index', 'AdminDashController@dashboard');
+});
 
-Route::resource('/admin/products', 'AdminProductController');
+
