@@ -14,7 +14,10 @@
 
 Route::group(['namespace' => 'Admin'], function() {
     Route::get('/admin', 'AuthController@login');
-    Route::get('/admin/index', 'DashController@dashboard');
+    Route::get('/admin/index', 'DashController@index');
+    Route::get('/admin/orders', 'OrderController@index');
+
+    Route::resource('/admin/categories', 'CategoryController');
 
     Route::resource('/admin/products', 'ProductController');
 });
