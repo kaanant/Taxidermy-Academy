@@ -10,6 +10,6 @@ use App\Http\Controllers\Controller;
 class OrderController extends Controller
 {
     function index(){
-        return view('');
+        return view('admin.order.index');
     }
 }
