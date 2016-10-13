@@ -15,13 +15,20 @@ class ProductController extends Controller
 
         $categories = $categoryModel->all();
 
-        dd($request->get('price'));
-
         if($request->get('category_id')){
             $products = $products->whereIn('category_id', $request->get('category_id'));
         }
 
+        if($request->get('price')){
+            $price = explode(',',$request->get('price'));
+            $downPrice = $price[0];
+            $upPrice = $price[1];
+            $products = $products->whereBetween('discount',$price);
+        }
+
         $products = $products->paginate(12);
-        return view('site/show_products',['categories'=>$categories,'products'=>$products]);
+        $products->setPath($request->fullUrl());
+
+        return view('site/show_products',compact('products', 'categories', 'upPrice', 'downPrice'));
     }
 }

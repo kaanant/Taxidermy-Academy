@@ -63,7 +63,9 @@
                                         <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                                     </p>
                                     <input type="hidden" name="price" id="priceHidden">
-                                    <div id="slider-range"></div>
+                                    <div id="slider-range" >
+
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -113,7 +115,7 @@
                 range: true,
                 min: 0,
                 max: 500,
-                values: [ 0, 500 ],
+                values: [ {{ $downPrice ?: 0 }}, {{ $upPrice ?: 500 }} ],
                 slide: function( event, ui ) {
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 
