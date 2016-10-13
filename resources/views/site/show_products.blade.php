@@ -47,20 +47,23 @@
                             <div class="row1 scroll-pane">
                                 @foreach($categories as $category)
                                 <div class="col col-4">
-                                    <label class="checkbox"><input type="checkbox" name="{{$category->id}}" ><i></i>{{$category->name}}</label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" {{ in_array($category->id, $request->get('category_id', [])) ? 'checked' : null }} name="category_id[]" value="{{$category->id}}" >
+                                        <i></i>{{$category->name}}
+                                    </label>
                                 </div>
                                 @endforeach
                             </div>
                         </section>
                         <section class="sky-form">
-                            <h4>İndirim</h4>
+                            <h4>Fiyat</h4>
                             <div class="row1 row2 scroll-pane">
                                 <div class="col col-4">
-                                    <label class="radio"><input type="radio" name="60" checked=""><i></i>%60 ve üstü</label>
-                                    <label class="radio"><input type="radio" name="50_40"><i></i>%50 ve üstü</label>
-                                    <label class="radio"><input type="radio" name="40_30"><i></i>%40 ve üstü  </label>
-                                    <label class="radio"><input type="radio" name="30_20"><i></i>%30 ve üstü  </label>
-                                    <label class="radio"><input type="radio" name="20_0"><i></i>%30 altı</label>
+                                    <p>
+                                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                    </p>
+                                    <input type="hidden" name="price" id="priceHidden">
+                                    <div id="slider-range"></div>
                                 </div>
                             </div>
                         </section>
@@ -100,5 +103,25 @@
             });
 
         });
+    </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#slider-range" ).slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [ 0, 500 ],
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+
+                    $('#priceHidden').val(ui.values[0] + ',' + ui.values[1]);
+                }
+            });
+            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        } );
     </script>
 @endsection
