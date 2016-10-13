@@ -49,10 +49,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="mepanel">
                                 <div class="row">
                                     <div class="col1 me-one">
-                                        <h4>Satılık Tahnitler</h4><hr>
+                                        <h4> <a href="{{action('Site\ProductController@showproducts')}}">Satılık Tahnitler</a></h4><hr>
                                         <ul style="width:200px;">
                                             @foreach($categories as $category)
-                                            <li><a href="products.html">{{$category->name}}</a></li>
+                                            <li><a href="{{action('Site\ProductController@showproducts')}}?category_id[]={{ $category->id }}">{{$category->name}}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>

@@ -14,7 +14,8 @@ class ProductController extends Controller
     function showproducts(Request $request, Category $categoryModel, Product $products){
 
         $categories = $categoryModel->all();
-
+        $upPrice = null;
+        $downPrice = null;
         if($request->get('category_id')){
             $products = $products->whereIn('category_id', $request->get('category_id'));
         }
