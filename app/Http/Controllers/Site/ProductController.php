@@ -16,6 +16,7 @@ class ProductController extends Controller
         $categories = $categoryModel->all();
         $upPrice = null;
         $downPrice = null;
+        $products = $products->where('status',1);
         if($request->get('category_id')){
             $products = $products->whereIn('category_id', $request->get('category_id'));
         }
