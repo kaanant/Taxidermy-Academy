@@ -1,11 +1,5 @@
 @extends('layouts.layout')
 
-@section('header')
-
-    <link href="/css/docs.min.css" rel="stylesheet">
-
-@stop
-
 
 @section('content')
 
@@ -29,7 +23,9 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
-                    <button type="submit" class="btn btn-primary">Yeni Ürün</button>
+                    <form action="{{ action('Admin\ProductController@edit', ['product' => 1]) }}">
+                        <button type="submit" class="btn btn-primary" >Yeni Ürün</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -54,7 +50,14 @@
                             <th>{{ $product->stock }}</th>
                             <th>{{ $product->category_id  }}</th>
                             <th>{{ $product->brand  }}</th>
-                            <th><a href="{{ action('Admin\ProductController@destroy', ['product' => $product]) }}">Sil</a></th>
+                            <th>
+                                <form method="DELETE" action="{{ action('Admin\ProductController@destroy', ['product' => $product]) }}">
+                                    <button class="btn btn-danger">Sil</button>
+                                </form>
+                                <form method="edit" action="{{ action('Admin\ProductController@edit', ['product' => $product]) }}">
+                                    <button class="btn">Düzenle</button>
+                                </form>
+                            </th>
                         </tr>
                         @endforeach
                     </tbody>

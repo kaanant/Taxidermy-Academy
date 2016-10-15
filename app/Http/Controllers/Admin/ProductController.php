@@ -8,16 +8,30 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    function create(Request $request){
+    function create(Request $request, Product $product){
+        $product = [
+            'name' => $request->name,
 
+        ];
+        $product->save();
+        return redirect('admin.product.index');
+    }
+
+    function edit(Product $product){
+        return view('admin.product.edit');
     }
 
     function destroy(Product $product){
+        dd($product);
         $product->delete();
+        return Redirect('admin.product.index');
+    }
+
+    function show(Product $product){
+        return "why";
     }
 
     function index(Product $product){
-        $products = $product->all();
-        return view('admin.product.index', ['products' => $products]);
+        return view('admin.product.index', ['products' => $product->all()]);
     }
 }
