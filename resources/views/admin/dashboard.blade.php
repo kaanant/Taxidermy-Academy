@@ -4,6 +4,13 @@
 
 
     <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="{{ action('Admin\DashController@index') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active">Kontrol Paneli</li>
+        </ol>
+    </div><!--/.row-->
+
+    <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Dashboard</h1>
         </div>
@@ -265,4 +272,13 @@
     </div><!--/.row-->
 </div>	<!--/.main-->
 
+
+@stop
+@section('scripts')
+
+
+    <script src="/js/chart.min.js"></script>
+    <script src="/js/chart-data.js"></script>
+    <script src="/js/easypiechart.js"></script>
+    <script src="/js/easypiechart-data.js"></script>
 @stop

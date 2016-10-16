@@ -58,18 +58,13 @@
         <li class="{{ setActive('admin/products', $request) }}"><a href="{{ action("Admin\\ProductController@index") }}"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Ürünler</a></li>
         <li class="{{ setActive('admin/orders', $request) }}"><a href="{{ action("Admin\\OrderController@index") }}"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Siparişler</a></li>
         <li class="{{ setActive('admin/categories', $request) }}"><a href="{{ action("Admin\\CategoryController@index") }}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg> Kategoriler</a></li>
-        <li ><a href="/galery"><svg class="glyph stroked tag"><use xlink:href="#stroked-tag"></use></svg> Etiketler</a></li>
+        <li ><a href="/galery"><svg class="glyph stroked camera"><use xlink:href="#stroked-camera"></use></svg> Galeri</a></li>
     </ul>
 
 </div><!--/.sidebar-->
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-            <li class="active">Icons</li>
-        </ol>
-    </div><!--/.row-->
+
 
     @yield('content')
 
@@ -78,11 +73,6 @@
 
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/chart.min.js"></script>
-<script src="/js/chart-data.js"></script>
-<script src="/js/easypiechart.js"></script>
-<script src="/js/easypiechart-data.js"></script>
-<script src="/js/bootstrap-datepicker.js"></script>
 
 @yield('scripts')
 

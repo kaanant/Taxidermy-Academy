@@ -3,7 +3,12 @@
 
 @section('content')
 
-
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="{{ action('Admin\DashController@index') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active">Ürünler</li>
+        </ol>
+    </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">

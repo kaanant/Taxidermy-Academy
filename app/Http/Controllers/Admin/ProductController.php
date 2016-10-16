@@ -2,23 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+
+    /*
+     * Category_id düzeltilecek
+     */
     function create(Request $request, Product $product){
-        $product = [
-            'name' => $request->name,
-            
-        ];
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->discount = $request->input('discount');
+        $product->stock = $request->input('stock');
+        $product->brand = $request->input('brand');
+        $product->product_quality = $request->input('quality');
+        $product->category_id = $request->input('category');
+        $product->product_key = "generatedkey3";
         $product->save();
-        return redirect('admin.product.index');
+        return redirect('admin/product');
     }
 
-    function edit(Product $product){
-        return view('admin.product.edit');
+    function edit(Product $product, Category $categories){
+        return view('admin.product.edit', ['categories' => $categories->all()]);
     }
 
     function destroy(Product $product){
