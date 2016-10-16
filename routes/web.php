@@ -27,6 +27,11 @@ Route::group(['namespace' => 'Site'], function(){
     Route::get('/index', 'IndexController@index');
     Route::get('/products','ProductController@showproducts');
     Route::get('/products/{product}','ProductController@productdetail');
+    Route::get('/login','AuthController@showlogin');
+    Route::post('/login','AuthController@login');
+    Route::get('/register','AuthController@showregister');
+    Route::post('/register','AuthController@register');
+    Route::get('/logout','AuthController@logout');
     //Route::get('/products')
 
 });

@@ -16,8 +16,13 @@
                                                 <img class="img-responsive zoom-img" src="images/p-1.png" alt=""/></a>
                                             <div class="product-bottom">
                                                 <h4>{{$product->name}}</h4>
+                                                @if($product->discount != $product->price)
                                                 <h4><a class="item_add" href="#"><i></i></a>
-                                                    <span class=" item_price">{{($product->discount) }}</span>
+                                                    <span class=" item_price"><strike>{{$product->price}} TL</strike></span>
+                                                </h4>
+                                                @endif
+                                                <h4><a class="item_add" href="#"><i></i></a>
+                                                    <span class=" item_price">{{($product->discount) }} TL</span>
                                                 </h4>
                                                 <h4>Kalite:@if($product->product_quality == 0)
                                                         Çok Düşük
@@ -32,9 +37,11 @@
                                                     @endif</h4>
                                             </div>
                                             <a href="{{ action('Site\\ProductController@productdetail', [$product->id]) }}"><button class="btn btn-link">Detayları Görüntüle</button></a>
+                                            @if($product->discount != $product->price)
                                             <div class="srch">
                                                 <span>%{{round(100 -($product->discount*100) / $product->price )}}</span>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach

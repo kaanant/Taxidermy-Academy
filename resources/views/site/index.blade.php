@@ -56,13 +56,13 @@
                                         <img class="img-responsive zoom-img" src="images/p-1.png" alt=""/></a>
                                     <div class="product-bottom">
                                         <h3>{{$product->name}}</h3>
-                                        <p>Explore Now</p>
                                         <h4><a class="item_add" href="#"><i></i></a>
                                             <span class=" item_price"><strike>{{$product->price}} TL</strike></span>
                                         </h4>
                                         <h4><a class="item_add" href="#"><i></i></a>
                                             <span class=" item_price">{{($product->discount) }}</span>
                                         </h4>
+                                        <a href="{{ action('Site\\ProductController@productdetail', [$product->id]) }}"><button class="btn btn-link">Detayları Görüntüle</button></a>
                                     </div>
                                     <div class="srch">
                                         <span>%{{round(100 -($product->discount*100) / $product->price )}}</span>

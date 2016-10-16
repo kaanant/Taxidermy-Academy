@@ -16,7 +16,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="top-header">
     <div class="container">
         <div class="top-header-main">
-            <div class="col-md-12 top-header-left">
+
+            <div class="col-md-10 top-header-left">
                 <div class="cart box_1">
                     <a href="checkout.html">
                         <div class="total">
@@ -27,6 +28,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="clearfix"></div>
                 </div>
             </div>
+            @if(!auth()->check())
+            <div class="col-md-2">
+                <a href="{{action("Site\\AuthController@showlogin")}}">
+                    <div class="col-sm-5 btn btn-link "  >
+                            Giriş Yap /
+                    </div>
+                </a>
+
+                <a href="{{action("Site\\AuthController@showregister")}}">
+                    <div class="col-sm-6 btn btn-link" >
+                            Kayıt Ol
+                    </div>
+                </a>
+            </div>
+            @else
+            <div class="col-md-2">
+                <div class="col-md-12">
+                    Hosgeldin,
+                    {{ucfirst(auth()->user()->name)}} {{ucfirst(auth()->user()->surname)}}
+                </div>
+                <a href="{{action("Site\\AuthController@logout")}}">
+                    <div class="col-sm-10">
+                        Çıkış Yap
+                    </div>
+                </a>
+            </div>
+            @endif
+
+
             <div class="clearfix"></div>
         </div>
     </div>
