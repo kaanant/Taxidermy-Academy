@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-    function index(Category $categoryModel, Product $productModel){
+    function index(Product $discountedProducts){
 
-        $categories = $categoryModel->all();
-        $latestProducts =DB::table('products')->orderBy('updated_at','desc')->take(3)->get();
-        $discountedProducts=DB::table('products')->whereColumn('discount','<','price')->orderBy('discount')->take(8)->get();
+        $latestProducts =DB::table('products')->where('status',1)->orderBy('updated_at','desc')->take(3)->get();
+        $discountedProducts=DB::table('products')->whereColumn('discount','<','price')->where('status',1)->orderBy('discount')->take(8)->get();
 
         return view('site/index',
-            ['categories'=>$categories, 
+            [
              'latest_products'=>$latestProducts,
              'discounted_products'=>$discountedProducts]);
     }

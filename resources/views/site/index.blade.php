@@ -26,13 +26,16 @@
             <div class="about-top grid-1">
                 @foreach($latest_products as $product)
                     <div class="col-md-4 about-left">
-                        <figure class="effect-bubba">
-                            <img class="img-responsive" src="images/abt-1.jpg" alt=""/>
-                            <figcaption>
-                                <h2>{{$product->name}}</h2>
-                                <p>{{$product->brand}}</p>
-                            </figcaption>
-                        </figure>
+                        <a href="{{action("Site\\ProductController@productdetail",[$product->id])}}">
+                            <figure class="effect-bubba">
+                                <img class="img-responsive" src="images/abt-2.jpg" alt=""/>
+
+                                <figcaption>
+                                    <h2>{{$product->name}}</h2>
+                                    <p>{{$product->brand}}</p>
+                                </figcaption>
+                            </figure>
+                        </a>
                     </div>
                 @endforeach
                 <div class="clearfix"></div>
@@ -49,7 +52,7 @@
                         @foreach($chunkedProducts as $product)
                             <div class="col-md-3 product-left">
                                 <div class="product-main simpleCart_shelfItem">
-                                    <a href="single.html" class="mask">
+                                    <a href="{{action("Site\\ProductController@productdetail",[$product->id])}}" class="mask">
                                         <img class="img-responsive zoom-img" src="images/p-1.png" alt=""/></a>
                                     <div class="product-bottom">
                                         <h3>{{$product->name}}</h3>

@@ -12,7 +12,7 @@
                                 @foreach($chunkedProducts as $product)
                                     <div class="col-md-3 product-left">
                                         <div class="product-main simpleCart_shelfItem">
-                                            <a href="single.html" class="mask">
+                                            <a href="{{ action('Site\\ProductController@productdetail', [$product->id]) }}" class="mask">
                                                 <img class="img-responsive zoom-img" src="images/p-1.png" alt=""/></a>
                                             <div class="product-bottom">
                                                 <h3>{{$product->name}}</h3>

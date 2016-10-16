@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
+use App\Product;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -19,11 +20,21 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @return void
      */
     public function boot()
     {
         //
+
+        Route::bind('product', function ($value) {
+            $product = Product::where('id', $value)->where('status', true)->first();
+
+            if (!$product) {
+                abort(404);
+            }
+
+            return $product;
+        });
+
 
         parent::boot();
     }
