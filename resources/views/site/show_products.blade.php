@@ -7,23 +7,31 @@
             <div class="single-main">
                 <div class="col-md-9 single-main-left">
                     <div class="product-top">
-                        @foreach($products->chunk(4) as $chunkedProducts)
+                        @foreach($products->chunk(3) as $chunkedProducts)
                             <div class="product-one">
                                 @foreach($chunkedProducts as $product)
-                                    <div class="col-md-3 product-left">
+                                    <div class="col-md-4 product-left">
                                         <div class="product-main simpleCart_shelfItem">
                                             <a href="{{ action('Site\\ProductController@productdetail', [$product->id]) }}" class="mask">
                                                 <img class="img-responsive zoom-img" src="images/p-1.png" alt=""/></a>
                                             <div class="product-bottom">
-                                                <h3>{{$product->name}}</h3>
-                                                <p>Explore Now</p>
-                                                <h4><a class="item_add" href="#"><i></i></a>
-                                                    <span class=" item_price"><strike>{{$product->price}} TL</strike></span>
-                                                </h4>
+                                                <h4>{{$product->name}}</h4>
                                                 <h4><a class="item_add" href="#"><i></i></a>
                                                     <span class=" item_price">{{($product->discount) }}</span>
                                                 </h4>
+                                                <h4>Kalite:@if($product->product_quality == 0)
+                                                        Çok Düşük
+                                                    @elseif($product->product_quality == 1)
+                                                        Düşük
+                                                    @elseif($product->product_quality == 2)
+                                                        Orta
+                                                    @elseif($product->product_quality == 3)
+                                                        Yüksek
+                                                    @else
+                                                        Çok Yüksek
+                                                    @endif</h4>
                                             </div>
+                                            <a href="{{ action('Site\\ProductController@productdetail', [$product->id]) }}"><button class="btn btn-link">Detayları Görüntüle</button></a>
                                             <div class="srch">
                                                 <span>%{{round(100 -($product->discount*100) / $product->price )}}</span>
                                             </div>

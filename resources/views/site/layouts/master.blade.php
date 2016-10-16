@@ -21,7 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="checkout.html">
                         <div class="total">
                             <span class="simpleCart_total"></span></div>
-                        <img src="images/cart-1.png" alt=""/>
+                        <img src="/images/cart-1.png" alt=""/>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                     <div class="clearfix"></div>
@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>VEDAT UĞURLU TAHNİT</h1></a>
+    <a href="{{action("Site\\IndexController@index")}}"><h1>VEDAT UĞURLU TAHNİT</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->

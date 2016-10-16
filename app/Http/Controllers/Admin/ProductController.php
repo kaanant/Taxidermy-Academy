@@ -11,7 +11,7 @@ class ProductController extends Controller
     function create(Request $request, Product $product){
         $product = [
             'name' => $request->name,
-
+            
         ];
         $product->save();
         return redirect('admin.product.index');

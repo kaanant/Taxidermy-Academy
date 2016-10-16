@@ -28,7 +28,7 @@ class ProductController extends Controller
             $products = $products->whereBetween('discount', $price);
         }
 
-        $products = $products->paginate(12);
+        $products = $products->paginate(9);
         $products->setPath($request->fullUrl());
 
         return view('site/show_products', compact('products', 'upPrice', 'downPrice'));

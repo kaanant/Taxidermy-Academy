@@ -620,6 +620,7 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
 .product-main {
     padding: 1em 0px 2.7em 0px;
     border:1px solid #ECEAEA;
+    min-height: 440px !important;
 }
 .product {
     padding: 3em 0px 6em 0px;
@@ -631,6 +632,10 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
     text-transform: uppercase;
 	font-family: 'BreeSerif-Regular';
 }
+.product-bottom h4 {
+    min-height: 19px !important;
+}
+
 .product-bottom h4 span{
     font-size: 17px;
     color: #000;
@@ -659,7 +664,7 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
     margin: 5px 0 0 0;
     text-transform: uppercase;
 }
-.product-one:nth-child(2){
+.product-one:nth-child(2), .product-one:nth-child(3){
 	margin-top:30px;
 }
 img.zoom-img {
@@ -1990,6 +1995,7 @@ a.mask {
 }
 .product-main {
     padding: 1em 0px 1.9em 0px;
+	min-height: 418px !important;
 }
 .infor-top {
     padding-bottom: 2.5em;
@@ -2162,6 +2168,7 @@ figure.effect-bubba p {
     width: 25%;
     float: left;
     padding: 0 8px;
+	min-height:440px !important;
 }
 .mask img {
     width: 60%;

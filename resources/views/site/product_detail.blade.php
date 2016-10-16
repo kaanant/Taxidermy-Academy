@@ -32,9 +32,14 @@
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                             <ul class="tag-men">
                                 <li><span>STOK DURUMU</span>
-                                    <span >: {{$product->stock}},</span></li>
+                                    <span >: @if ($product->stock ==0)
+                                                 Stokta Bulunmamaktadır
+                                             @else
+                                                 {{$product->stock}}
+                                             @endif
+                                    </span></li>
                                 <li><span>TAG</span>
-                                    <span>: TAG!!!,</span></li>
+                                    <span>: TAG!!! </span></li>
                                 <li><span>MARKA</span>
                                     <span>: {{$product->brand}} </span>
                                 <li><span>KALİTE</span>
@@ -50,9 +55,11 @@
                                     @else
                                         Çok Yüksek
                                     @endif
-
-
                                     </span></li>
+                                <li><span>Ürün Kodu</span>
+                                    <span>: {{$product->product_key}} </span>
+
+
                             </ul>
                             <a href="#" class="add-cart item_add">Sepete Ekle</a>
 
@@ -67,7 +74,7 @@
                                 <li class="subitem1"><a href="#"> Ürün Açıklaması</a></li>
                             </ul>
                         </li>
-                        <li class="item4"><a href="#"><img src="/images/arrow.png" alt="">Helpful Links</a>
+                        <li class="item4"><a href="#"><img src="/images/arrow.png" alt="">Sertifika</a>
                             <ul>
                                 <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
                                 <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
@@ -118,7 +125,8 @@
         $(window).load(function() {
             $('.flexslider').flexslider({
                 animation: "slide",
-                controlNav: "thumbnails"
+                controlNav: "thumbnails",
+                directionNav: false
             });
         });
     </script>
