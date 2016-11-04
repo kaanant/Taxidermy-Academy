@@ -29,7 +29,6 @@
                         <a href="{{action("Site\\ProductController@productdetail",[$product->id])}}">
                             <figure class="effect-bubba">
                                 <img class="img-responsive" src="images/abt-2.jpg" alt=""/>
-
                                 <figcaption>
                                     <h2>{{$product->name}}</h2>
                                     <p>{{$product->brand}}</p>

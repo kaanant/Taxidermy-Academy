@@ -61,8 +61,7 @@
 
 
                             </ul>
-                            <a href="#" class="add-cart item_add">Sepete Ekle</a>
-
+                            <a href="{{action('Site\\CartController@addProduct',[$product->id])}}" class="add-cart item_add">Sepete Ekle</a>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
