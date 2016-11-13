@@ -13,7 +13,7 @@
 
 
 Route::group(['namespace' => 'Admin'], function() {
-    Route::get('/admin', 'AuthController@login');
+    Route::get('/admin', 'AuthController@showLogin');
     Route::get('/admin/index', 'DashController@index');
     Route::get('/admin/orders', 'OrderController@index');
 
