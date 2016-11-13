@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="{{ action('Admin\DashController@index') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
             <li><a href="{{ action('Admin\ProductController@index') }}">Ürünler</a></li>
-            <li class="active">Düzenle</li>
+            <li class="active">Yeni Ürün</li>
         </ol>
     </div><!--/.row-->
 
@@ -22,35 +22,40 @@
                 <div class="panel-body">
                     <div class="col-md-12">
                         <form role="form" method="POST" action="{{ action('Admin\ProductController@store') }}">
-
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Ürün Adı</label>
-                                <input class="form-control" name="name" value="{{ $product->name }}">
+                                <input class="form-control" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ürün Key</label>
+                                <input class="form-control" name="key">
                             </div>
 
                             <div class="form-group">
                                 <label>Fiyatı</label>
-                                <input class="form-control" name="price" value="{{ $product->price }}">
+                                <input class="form-control" name="price">
                             </div>
 
                             <div class="form-group">
                                 <label>İndirimli Fiyatı</label>
-                                <input class="form-control" name="discount" value="{{ $product->discount }}">
+                                <input class="form-control" name="discount" >
                             </div>
 
                             <div class="form-group">
                                 <label>Miktar</label>
-                                <input class="form-control" name="stock" value="{{ $product->stock }}">
+                                <input class="form-control" name="stock">
                             </div>
 
                             <div class="form-group">
                                 <label>Marka</label>
-                                <input class="form-control" name="brand" value="{{ $product->brand }}">
+                                <input class="form-control" name="brand">
                             </div>
 
                             <div class="form-group">
                                 <label>Kalite</label>
-                                <select class="form-control" name="quality" value="{{ $product->quality }}">
+                                <select class="form-control" name="quality">
                                     <option>Yüksek</option>
                                     <option>Orta</option>
                                     <option>Düşük</option>
@@ -61,7 +66,7 @@
                                 <label>Kategori</label>
                                 <select class="form-control" name="category">
                                     @foreach($categories as $category)
-                                        <option selected={{ $product->category_id }}>{{ $category->name }}</option>
+                                        <option>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -70,7 +75,7 @@
                                     <button type="submit "class="btn btn-block btn-primary">Onayla</button>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <button type="reset" class="btn btn-block btn-default">Geri Al</button>
+                                    <button type="reset" class="btn btn-block btn-default">Temizle</button>
                                 </div>
                             </div>
                         </form>
@@ -83,4 +88,4 @@
 
 @section('scripts')
     <script src="/js/jquery-validate/jquery.validate.min.js"></script>
-    @stop
+@stop

@@ -20,7 +20,7 @@
         <div class="col-md-10">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Panel heading</div>
+                <div class="panel-heading col-md-12">Panel heading</div>
 
             </div>
         </div>
@@ -28,27 +28,28 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
-                    <form action="{{ action('Admin\ProductController@edit', ['product' => 1]) }}">
+                    <form action="{{ action('Admin\ProductController@create') }}">
                         <button type="submit" class="btn btn-primary" >Yeni Ürün</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-                <!-- Table -->
+        <!-- Table -->
+        <div class="col-md-12">
+            <div class="panel panel-body">
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
-                            <th>Ürün Kodu</th>
-                            <th>Fiyat</th>
-                            <th>Stok</th>
-                            <th>Kategori</th>
-                            <th>Marka</th>
-                            <th>İşlemler</th>
-                        </tr>
+                    <tr>
+                        <th>Ürün Kodu</th>
+                        <th>Fiyat</th>
+                        <th>Stok</th>
+                        <th>Kategori</th>
+                        <th>Marka</th>
+                        <th>İşlemler</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach ($products as $product)
+                    @foreach ($products as $product)
                         <tr>
                             <th>{{ $product->product_key  }}</th>
                             <th>{{ $product->price  }}</th>
@@ -57,17 +58,20 @@
                             <th>{{ $product->brand  }}</th>
                             <th>
                                 <form method="DELETE" action="{{ action('Admin\ProductController@destroy', ['product' => $product]) }}">
-                                    <button class="btn btn-danger">Sil</button>
+                                    <button type="submit" class="btn btn-danger">Sil</button>
                                 </form>
                                 <form method="edit" action="{{ action('Admin\ProductController@edit', ['product' => $product]) }}">
-                                    <button class="btn">Düzenle</button>
+                                    <button type="submit" class="btn">Düzenle</button>
                                 </form>
                             </th>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+
 @stop
 
 

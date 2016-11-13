@@ -11,24 +11,27 @@ class ProductController extends Controller
 {
 
 
-    /*
-     * Category_id düzeltilecek
-     */
-    function create(Request $request, Product $product){
-        $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->discount = $request->input('discount');
-        $product->stock = $request->input('stock');
-        $product->brand = $request->input('brand');
-        $product->product_quality = $request->input('quality');
-        $product->category_id = $request->input('category');
-        $product->product_key = "generatedkey3";
+
+    function create(Category $categories){
+        return view('admin.product.create', ['categories' => $categories->all()]);
+    }
+
+    function store(Request $request, Product $product){
+        $product->name = $request['name'];
+        $product->price = $request['price'];
+        $product->discount = $request['discount'];
+        $product->stock = $request['stock'];
+        $product->product_key = $request['key'];
+        $product->brand = $request['brand'];
+        $product->product_quality = $request['quality'];
+        $product->category_id = $request['category'];
+        //dd($product);
         $product->save();
-        return redirect('admin/product');
+        return redirect('admin/product/index');
     }
 
     function edit(Product $product, Category $categories){
-        return view('admin.product.edit', ['categories' => $categories->all()]);
+        return view('admin.product.edit', ['categories' => $categories->all(), 'product' => $product]);
     }
 
     function destroy(Product $product){
