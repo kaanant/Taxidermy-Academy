@@ -23,6 +23,15 @@ class ViewComposerProvider extends ServiceProvider
 
         View::composer('site.*', function($view) use ($request){
             $view->with('categories', Category::all());
+
+            $cost = 0;
+            if (session('cart')) {
+                $cost = array_sum(array_map(function($item){
+                    return (float) $item['cost'];
+                }, session('cart')));
+            }
+
+            $view->with('cartTotalCost', $cost);
         });
     }
 

@@ -8,9 +8,9 @@
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
-    } </script>
+    }
+</script>
 <!--start-menu-->
-<script src="/js/simpleCart.min.js"></script>
 
 <script type="text/javascript" src="/js/memenu.js"></script>
 <script>$(document).ready(function () {
@@ -19,6 +19,14 @@
 <!--dropdown-->
 <script src="/js/jquery.easydropdown.js"></script>
 <script src="/js/responsiveslides.min.js"></script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    });
+</script>
 
 <script>
     // You can also use "$(window).load(function() {"
@@ -38,5 +46,26 @@
             }
         });
 
+
+
+        $('.cartOperation').click(function (e) {
+            e.preventDefault();
+
+            var product_id = $(this).attr('data-product-id');
+            var status = $(this).attr('data-status');
+            $.ajax({
+                'url': '/cart/' + product_id,
+                'type': 'PUT',
+                'data': {'status': status},
+                'dataType': 'JSON',
+                'success': function (resp) {
+                    $('#aCartCount').html(resp.count);
+                    $('#simpleCart_total').html(resp.total_cost);
+                }
+            });
+        });
+
     });
+
+
 </script>

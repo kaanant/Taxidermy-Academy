@@ -32,9 +32,8 @@ Route::group(['namespace' => 'Site'], function(){
     Route::get('/register','AuthController@showregister');
     Route::post('/register','AuthController@register');
     Route::get('/logout','AuthController@logout');
-    Route::get('/cart/{product}','CartController@addProduct');
-    //Route::get('/products')
-
+    Route::put('/cart/{product}','CartController@addProduct');
+    Route::get('/cartdetail','CartController@showcart');
 });
 
 

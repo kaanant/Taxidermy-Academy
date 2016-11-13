@@ -18,13 +18,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="top-header-main">
 
             <div class="col-md-10 top-header-left">
-                <div class="cart box_1">
-                    <a href="checkout.html">
+                <div class="cart box_1 text-center">
+                    <a href="{{action("Site\\CartController@showcart")}}">
                         <div class="total">
-                            <span class="simpleCart_total"></span></div>
+                            <span id="simpleCart_total">
+                                {{ $cartTotalCost }}
+                            </span>$
+                        </div>
                         <img src="/images/cart-1.png" alt=""/>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <p>
+                        <a href="javascript:;" class="simpleCart_empty">
+                            Sepette <span id="aCartCount">{{ session('cart') ? count(session('cart')) : 0 }}</span> ürün var.
+                        </a>
+                    </p>
                     <div class="clearfix"></div>
                 </div>
             </div>

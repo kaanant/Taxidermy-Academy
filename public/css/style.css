@@ -1510,7 +1510,7 @@ ul.unit {
 }
 ul.unit li {
     display: inline-block;
-    width: 25%;
+    width: 20%;
     float: left;
 }
 ul.cart-header li p,ul.cart-header1 li p,ul.cart-header2 li p{
@@ -1529,7 +1529,7 @@ ul.cart-header, ul.cart-header1 {
     padding: 1em;
     background: #f8f8f8;
     border-bottom: 1px solid #181b2a;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 ul.cart-header2{
 	padding:1em;
@@ -1537,7 +1537,7 @@ ul.cart-header2{
 }
 ul.cart-header li, ul.cart-header1 li, ul.cart-header2 li {
     display: inline-block;
-    width: 25%;
+    width: 20%;
     float: left;
 }
 ul.cart-header li span,ul.cart-header1 li span,ul.cart-header2 li span{
@@ -1548,7 +1548,7 @@ ul.cart-header li span,ul.cart-header1 li span,ul.cart-header2 li span{
 	text-align: left;
 }
 span.cost {
-    font-size: 1.4em !important;
+    font-size: 1.2em !important;
     margin-top: 1.4em !important;
 }
 .in-check {
@@ -1571,7 +1571,7 @@ span.cost {
 	margin-bottom:4%;
 }
 span.name {
-    font-size: 1.35em !important;
+    font-size: 1.20em !important;
     margin-top: 1.45em !important;
 }
 /*--end-checkout--*/
@@ -2052,11 +2052,11 @@ a.mask {
     font-size: 1.75em;
 }
 span.name {
-    font-size: 1.25em !important;
+    font-size: 1.2em !important;
     margin-top: 2.5em !important;
 }
 span.cost {
-    font-size: 1.25em !important;
+    font-size: 1.20em !important;
     margin-top: 2.45em !important;
 }
 .tabs {
