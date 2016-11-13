@@ -16,11 +16,12 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::get('/admin', 'AuthController@showLogin');
     Route::get('/admin/index', 'DashController@index');
     Route::get('/admin/orders', 'OrderController@index');
+    Route::get('/admin/logout', 'AuthController@logout');
 
     Route::resource('/admin/categories', 'CategoryController');
 
     Route::resource('/admin/products', 'ProductController');
-});
+}); 
 
 Route::group(['namespace' => 'Site'], function(){
     

@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <input class="form-control" placeholder="Şifre" name="password" type="password" value="">
                         </div>
-                        <a href="index.html" class="btn btn-primary">Giriş Yap</a>
+                        <a href="{{ action('Admin\\AuthController@login') }}" class="btn btn-primary">Giriş Yap</a>
                     </fieldset>
                 </form>
             </div>
