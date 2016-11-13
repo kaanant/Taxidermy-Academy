@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::resource('/admin/categories', 'CategoryController');
 
     Route::resource('/admin/products', 'ProductController');
-}); 
+});
 
 Route::group(['namespace' => 'Site'], function(){
     

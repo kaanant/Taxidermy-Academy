@@ -22,7 +22,7 @@
                 <div class="panel-body">
                     <div class="col-md-12">
                         <form role="form" method="POST" action="{{ action('Admin\ProductController@store') }}">
-
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Ürün Adı</label>
                                 <input class="form-control" name="name" value="{{ $product->name }}">
