@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Site'], function(){
     Route::get('/logout','AuthController@logout');
     Route::put('/cart/{product}','CartController@addProduct');
     Route::get('/cartdetail','CartController@showcart');
+    Route::get('/cartorder','OrderController@cartOrder');
 });
 
 

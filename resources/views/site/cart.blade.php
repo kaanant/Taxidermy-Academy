@@ -8,7 +8,6 @@
         </div>
         <div class="ckeckout-top">
             <div class="cart-items">
-                <h3>SEPETİM</h3>
                 <div class="in-check" >
                     <ul class="unit">
                         <li><span>Item</span></li>
@@ -31,6 +30,9 @@
                                 <div class="clearfix"> </div>
                         </ul>
                     @endforeach
+                    <ul>
+                        <li style="float: right"><a href="{{action("Site\\OrderController@cartOrder")}}" class="add-cart item_add">Satın Al</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
