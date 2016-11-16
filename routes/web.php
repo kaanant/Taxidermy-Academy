@@ -12,7 +12,7 @@
 */
 
 
-Route::group(['namespace' => 'Admin'], function() {
+Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/admin', 'AuthController@showLogin');
     Route::get('/admin/index', 'DashController@index');
     Route::get('/admin/orders', 'OrderController@index');
@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::resource('/admin/categories', 'CategoryController');
 
     Route::resource('/admin/products', 'ProductController');
-}); 
+});
 
 Route::group(['namespace' => 'Site'], function(){
     

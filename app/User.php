@@ -27,6 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAdmin(){
+        if($this->attributes['adminStatus'] == 0){
+            return 0;
+        }
+        return 1;
+    }
 
     public function setPasswordAttribute($password)
     {

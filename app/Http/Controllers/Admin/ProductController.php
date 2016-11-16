@@ -31,11 +31,12 @@ class ProductController extends Controller
     }
 
     function edit(Product $product, Category $categories){
+        //dd($product);
         return view('admin.product.edit', ['categories' => $categories->all(), 'product' => $product]);
     }
 
     function destroy(Product $product){
-        dd($product);
+        //dd($product);
         $product->delete();
         return Redirect('admin.product.index');
     }

@@ -46,16 +46,18 @@
                         <th>Kategori</th>
                         <th>Marka</th>
                         <th>İşlemler</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($products as $product)
                         <tr>
-                            <th>{{ $product->product_key  }}</th>
+                            <th>{{ $product->name  }}</th>
                             <th>{{ $product->price  }}</th>
                             <th>{{ $product->stock }}</th>
                             <th>{{ $product->category_id  }}</th>
                             <th>{{ $product->brand  }}</th>
+                            <th>{{ $product->status  }}</th>
                             <th>
                                 <form method="DELETE" action="{{ action('Admin\ProductController@destroy', ['product' => $product]) }}">
                                     <button type="submit" class="btn btn-danger">Sil</button>
