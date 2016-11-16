@@ -17,7 +17,7 @@ class OrderController extends Controller
             return redirect(action("Site\\AuthController@showlogin"));
         }
 
-        return 0;
+        return view('site.order');
     }
 
 }

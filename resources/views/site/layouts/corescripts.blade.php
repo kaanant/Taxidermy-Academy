@@ -19,6 +19,7 @@
 <!--dropdown-->
 <script src="/js/jquery.easydropdown.js"></script>
 <script src="/js/responsiveslides.min.js"></script>
+<script src="/js/bootstrap-notify.min.js"></script>
 
 <script>
     $.ajaxSetup({
@@ -47,7 +48,6 @@
         });
 
 
-
         $('.cartOperation').click(function (e) {
             e.preventDefault();
 
@@ -61,6 +61,41 @@
                 'success': function (resp) {
                     $('#aCartCount').html(resp.count);
                     $('#simpleCart_total').html(resp.total_cost);
+
+                    if(status == "add"){
+                        $.notify({
+                            message: 'Ürün sepetinize başarıyla eklendi'
+                        }, {
+                            delay: 3000,
+                            type: 'success',
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                    }else{
+                        $.notify({
+
+                            message: 'Ürün sepetinizden silindi'
+                        }, {
+                            delay: 3000,
+                            type: 'info',
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                    }
                 }
             });
         });

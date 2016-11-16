@@ -9,3 +9,4 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
 
 <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all"/>
