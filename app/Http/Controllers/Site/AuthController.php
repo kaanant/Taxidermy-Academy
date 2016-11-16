@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\User;
+use App\Address;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -20,22 +21,26 @@ class AuthController extends Controller
         return view("/site/register");
     }
     
-    function register(Request $request,User $userModel){
+    function register(Request $request,User $userModel,Address $addressModel){
 
         $this->validate($request, [
             'name' =>'required',
             'surname' =>'required',
             'email' =>'required|email|unique:users',
-            'password'=>'required|min:3|confirmed'
+            'password'=>'required|min:3|confirmed',
+            'address'=>'required|min:20'
         ]);
         
         $user = $userModel->create($request->all());
-
         if(!$user){
             return redirect()->back()->withErrors(['registererror', 'Bir Hata Oluştu']);
         }
 
         auth()->login($user);
+        $addressModel->address = $request->address;
+        $addressModel->user_id = $request->user()->id;
+        $addressModel->save();
+        
         return redirect(action("Site\\IndexController@index"));
     }
 
