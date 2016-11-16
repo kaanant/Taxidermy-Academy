@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Site'], function(){
     Route::put('/cart/{product}','CartController@addProduct');
     Route::get('/cartdetail','CartController@showcart');
     Route::get('/cartorder','OrderController@cartOrder');
+    Route::post('/payment','OrderController@payment');
 });
 
 

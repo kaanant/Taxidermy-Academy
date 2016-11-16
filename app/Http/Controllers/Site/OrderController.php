@@ -20,4 +20,11 @@ class OrderController extends Controller
         return view('site.order');
     }
 
+    function payment(Request $request){
+
+        dd($request);
+
+        return 0;
+    }
+
 }

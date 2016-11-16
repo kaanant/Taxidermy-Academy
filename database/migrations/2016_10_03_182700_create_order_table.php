@@ -20,6 +20,7 @@ class CreateOrderTable extends Migration
             $table->integer('billing_address_id');
             $table->string('payment_type');
             $table->double('total_price');
+            $table->string('shipment_phone');
             $table->timestamps();
         });
     }
