@@ -21,9 +21,10 @@
                 <div class="col-md-6 account-left">
                     <input placeholder="İsim" name="name" id="name" type="text" tabindex="1" required>
                     <input placeholder="Soyad" name="surname" id="surname" type="text" tabindex="2" required>
-
+                    <textarea placeholder="Adres" name="address" id="address" style="width: 488px;height:100px; resize: none;"  maxlength="200"></textarea>
                     <button type="submit" class="btn btn-success"> Kayıt Ol</button>
                 </div>
+
                 <div class="clearfix"></div>
 
 

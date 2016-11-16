@@ -38,4 +38,8 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function address(){
+        return $this->hasMany(Address::class);
+    }
 }
