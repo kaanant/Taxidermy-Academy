@@ -11,8 +11,15 @@ class Product extends Model
         'price',
         'stock',
 
+    ];
 
 
-        ];
+    /**
+     * @return mixed
+     */
+    public function getCategoryName(){
+        $category = Category::find($this->category_id);
 
+        return $category->name;
+    }
 }

@@ -38,12 +38,9 @@ class ProductController extends Controller
     function destroy(Product $product){
         //dd($product);
         $product->delete();
-        return Redirect('admin.product.index');
+        return redirect('admin/product/index');
     }
 
-    function show(Product $product){
-        return "why";
-    }
 
     function index(Product $product){
         return view('admin.product.index', ['products' => $product->all()]);
