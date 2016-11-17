@@ -10,10 +10,12 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+Route::get('/admin', 'Admin\\AuthController@showLogin');
+Route::post('/admin', 'Admin\\AuthController@login');
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
-    Route::get('/admin', 'AuthController@showLogin');
+
+
     Route::get('/admin/index', 'DashController@index');
     Route::get('/admin/orders', 'OrderController@index');
     Route::get('/admin/logout', 'AuthController@logout');
