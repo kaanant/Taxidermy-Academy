@@ -281,8 +281,10 @@ class ComposerStaticInit82fad495c74ffdec8e0f7c6f3042c817
     public static $classMap = array (
         'CreateAddressTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_181722_create_address_table.php',
         'CreateCategoryTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_182517_create_category_table.php',
+        'CreateImagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_16_170441_create_images_table.php',
         'CreateOrderProduct' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_193908_create_order_product.php',
         'CreateOrderTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_182700_create_order_table.php',
+        'CreatePhotoGalleryTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_16_165938_create_photo_gallery_table.php',
         'CreateProductTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_181206_create_product_table.php',
         'CreateProductTagTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_194505_create_product_tag_table.php',
         'CreateTagTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_182354_create_tag_table.php',

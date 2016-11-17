@@ -21,8 +21,15 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/admin/logout', 'AuthController@logout');
 
     Route::resource('/admin/categories', 'CategoryController');
-
     Route::resource('/admin/products', 'ProductController');
+
+    Route::get('/admin/test','AlbumController@getAlbumList');
+    Route::get('/admin/createalbum', 'AlbumController@getForm');
+    Route::post('/createalbum', 'AlbumController@postCreate');
+    Route::get('/deletealbum/{id}', 'AlbumController@getDelete');
+    Route::get('/album/{id}','AlbumController@getAnAlbum');
+
+
 });
 
 Route::group(['namespace' => 'Site'], function(){
@@ -39,6 +46,7 @@ Route::group(['namespace' => 'Site'], function(){
     Route::get('/cartdetail','CartController@showcart');
     Route::get('/cartorder','OrderController@cartOrder');
     Route::post('/payment','OrderController@payment');
+
 });
 
 
