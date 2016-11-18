@@ -23,11 +23,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::resource('/admin/categories', 'CategoryController');
     Route::resource('/admin/products', 'ProductController');
 
-    Route::get('/admin/test','AlbumController@getAlbumList');
+    /*Route::get('/admin/test','AlbumController@getAlbumList');
     Route::get('/admin/createalbum', 'AlbumController@getForm');
     Route::post('/createalbum', 'AlbumController@postCreate');
     Route::get('/deletealbum/{id}', 'AlbumController@getDelete');
-    Route::get('/album/{id}','AlbumController@getAnAlbum');
+    Route::get('/album/{id}','AlbumController@getAnAlbum');*/
 
 
 });

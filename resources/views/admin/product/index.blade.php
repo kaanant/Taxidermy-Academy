@@ -12,11 +12,8 @@
 
     <div class="row">
         <div class="col-lg-12">
-
-
-
+            <h1 class="page-header"></h1>
         </div>
-
     </div><!--/.row-->
 
     <div class="row">
@@ -49,7 +46,7 @@
                                 <th>{{ $product->name  }}</th>
                                 <th>{{ $product->price  }}</th>
                                 <th>{{ $product->stock }}</th>
-                                <th>{{ $product->category_id  }}</th>
+                                <th>{{ $product->getCategoryName()  }}</th>
                                 <th>{{ $product->brand  }}</th>
                                 <th>{{ $product->status  }}</th>
                                 <th>
