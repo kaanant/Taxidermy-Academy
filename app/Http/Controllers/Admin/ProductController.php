@@ -17,7 +17,7 @@ class ProductController extends Controller
     }
 
     function store(Request $request, Product $product){
-        $product->name = $request['name'];
+        $product->name = $request->get('name');
         $product->price = $request['price'];
         $product->discount = $request['discount'];
         $product->stock = $request['stock'];

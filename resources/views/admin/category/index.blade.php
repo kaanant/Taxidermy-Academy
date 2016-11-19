@@ -19,11 +19,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">Kategoriler
-                <div class="col-md-2">
-                    <form action="{{ action('Admin\\CategoryController@create') }}">
-                        <button type="submit" class="btn btn-primary" >Yeni Kategori</button>
-                    </form>
-                </div>
+                <a href="{{ action('Admin\\CategoryController@create') }}" class="btn btn-primary pull-right">Yeni Kategori</a>
             </div>
             <div class="panel panel-body">
                 <table class="table table-striped">

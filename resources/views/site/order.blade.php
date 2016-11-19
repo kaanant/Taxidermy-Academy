@@ -2,111 +2,113 @@
 
 
 @section('content')
-    <div class="contact">
-        <div class="container">
-            <div class="contact-top heading">
-                <h2>Sipariş Onay</h2>
-            </div>
-            <div class="contact-text">
-                <div class="col-md-12 contact-right">
-                    <form method="POST" action="{{action("Site\\OrderController@payment")}}">
-                        {{csrf_field()}}
-                        <div class="contact">
-                            <div class="container">
-                                <div class="contact-top heading">
-                                    <h2>CONTACT</h2>
-                                </div>
-                                <div class="contact-text">
-                                    <div class="col-md-3 contact-left">
-                                        <div class="address">
-                                            <h5>Address</h5>
-                                            <p>The company name,
-                                                <span>Lorem ipsum dolor,</span>
-                                                Glasglow Dr 40 Fe 72.</p>
-                                        </div>
-                                        <div class="address">
-                                            <h5>Address1</h5>
-                                            <p>Tel:1115550001,
-                                                <span>Fax:190-4509-494</span>
-                                                Email: <a href="mailto:example@email.com">contact@example.com</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 contact-right">
-                                        <form>
-                                            <input type="text" placeholder="Name">
-                                            <input type="text" placeholder="Phone">
-                                            <input type="text"  placeholder="Email">
-                                            <textarea placeholder="Message" required=""></textarea>
-                                            <div class="submit-btn">
-                                                <input type="submit" value="SUBMIT">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="clearfix"></div>
+    <div class="container">
+        <div class="contact-top heading">
+            <h2>Sipariş Onay</h2>
+        </div>
+        <div class="contact-text">
+            <div class="col-md-12 contact-right">
+                <form method="POST" action="{{action("Site\\OrderController@payment")}}">
+                {{csrf_field()}}
+                <div class="heading " style="margin-top: 1px">
+                    <h3 class="ghj">Teslim Edilecek Kişi Bilgisi</h3>
+                </div>
+                <div class="contact-text">
+                        <input type="text" name="shipment_name" placeholder="İsim Soyisim">
+                        <input type="text" name="shipment_phone" placeholder="Telefon">
+                        <input type="text" name="shipment_email" placeholder="Email">
+                    <div class="clearfix"></div>
+                </div>
+                <hr>
+                <div class=" heading " style=>
+                    <h3 class="ghj">Kargo Tipi</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="radio">
+                                <label for="part_of" class="text-muted" style="font-size: large">
+                                    <input type="radio" name="delivery" id="part_of"
+                                           value="part_of">
+                                    Parça Başına Kargo
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="radio">
+                                <label for="complete" class="text-muted" style="font-size: large">
+                                    <input type="radio" name="delivery" id="complete"
+                                           value="complete">
+                                    Hepsi Dahil Kargo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class=" heading " style=>
+                    <h3 class="ghj">Ödeme Tipi</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="radio">
+                                <label for="part_of" class="text-muted" style="font-size: large">
+                                    <input type="radio" name="payment" id="transfer"
+                                           value="transfer">
+                                    EFT/Banka Ödemesi
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="radio">
+                                <label for="complete" class="text-muted" style="font-size: large">
+                                    <input type="radio" name="payment" id="cash"
+                                           value="cash">
+                                    Kapıda Ödeme
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class=" heading " style=>
+                    <h3 class="ghj">Teslimat Adresi</h3>
+                    @foreach($user->address as $address)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="radio">
+                                    <label for="address" class="text-muted" style="font-size: large">
+                                        <input type="radio" name="address" id="delivery_address"
+                                               value="{{$address->id}}">
+                                        {{$address->address}}
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="tabs">
-                            <ul class="menu_drop">
-                                <li class="item1"><a href="#"><img src="images/arrow.png" alt="">Teslim Edilecek Kişi</a>
-                                    <ul>
-                                       <li class="subitem2">
-                                           <a href="#">
-                                               <input type="text"  style="margin-top:10px; height: 50px" id="name" name="name" placeholder="Adı">
-                                               <input type="text" style="height: 50px" id="phone" name="phone" placeholder="Telefonu">
-                                               <input type="text"  style="height: 50px" id="email" name="email" placeholder="Email">
-                                           </a>
-                                       </li>
-                                    </ul>
-                                </li>
-                                <li class="item1"><a href="#"><img src="images/arrow.png" alt="">Kargo Tipi</a>
-                                    <ul>
-                                        <li class="subitem2">
-                                            <a href="#">
-                                                <label for="delivery">
-                                                    Parça Başına Kargo: <input type="radio" name="delivery" id="part_of" value="part_of"><br>
-                                                    Hepsi Dahil Kargo: <input type="radio" name="delivery" id="complete" value="complete">
-                                                </label>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="item1"><a href="#"><img src="images/arrow.png" alt="">Ödeme Tipi</a>
-                                    <ul>
-                                        <li class="subitem2">
-                                            <a href="#">
-                                                <label for="delivery">
-                                                    EFT/Havale: <input type="radio" name="payment" id="transfer" value="part_of"><br>
-                                                    Kapıda Ödeme: <input type="radio" name="payment" id="selfpayment" value="complete">
-                                                </label>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="item1"><a href="#"><img src="images/arrow.png" alt="">Teslimat Adresi</a>
-                                    <ul>
-                                        <li class="subitem2">
-                                            @foreach($user->address as $a)
-                                                <label> {{$a->address}}</label>
-                                            @endforeach
-                                            <textarea placeholder="Adres" id="address" name="address" style="height: 100px;" ></textarea>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-
+                    @endforeach
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="radio">
+                                <label for="address" class="text-muted" style="font-size: large">
+                                    <input type="radio" name="address" id="new_address"
+                                           value="new_address">
+                                    Yeni Adres
+                                </label>
+                                <textarea placeholder="Adres" id="new_address" name="new_adress"
+                                          class="col-md-1"></textarea>
+                            </div>
                         </div>
-                        <br>
-                        <div class="submit-btn" style="margin-top: 10px; float: left;">
-                            <input type="submit" value="SUBMIT">
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="clearfix"></div>
+
+                <div class="submit-btn" style=" margin-bottom: 80px; float: right;">
+                    <input type="submit" value="Sipariş Ver">
+                </div>
+                </form>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+
 
 @endsection
 

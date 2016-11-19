@@ -25,7 +25,7 @@
                                 </li>
                                 <li><span class="name">{{ $product->name }}</span></li>
                                 <li><span class="cost"> {{ $product->discount }} TL</span></li>
-                                <li><span class="cost" > {{ $productIds[$product->id] }}</span></li>
+                                <li><span class="cost" > {{ session('cart')[$product->id]['count'] }}</span></li>
                                 <li><span class="name">Delivered in 2-3 business days</span></li>
                                 <div class="clearfix"> </div>
                         </ul>

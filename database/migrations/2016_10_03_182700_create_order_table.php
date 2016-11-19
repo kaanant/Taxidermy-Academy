@@ -21,6 +21,8 @@ class CreateOrderTable extends Migration
             $table->string('payment_type');
             $table->double('total_price');
             $table->string('shipment_phone');
+            $table->string('shipment_user');
+            $table->string('delivery_type');
             $table->timestamps();
         });
     }

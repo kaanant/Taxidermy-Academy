@@ -50,12 +50,10 @@
                                 <th>{{ $product->brand  }}</th>
                                 <th>{{ $product->status  }}</th>
                                 <th>
-                                    <form method="edit" action="{{ action('Admin\\ProductController@edit', ['product' => $product]) }}">
-                                        <button type="submit" class="btn btn-default">Düzenle</button>
-                                    </form>
+                                    <a href="{{ action('Admin\\ProductController@edit', ['product' => $product]) }}" class="btn btn-default">Düzenle</a>
                                 </th>
                                 <th>
-                                    <form method="DELETE" action="{{ action('Admin\\ProductController@destroy', ['product' => $product]) }}">
+                                    <form method="POST" action="{{ action('Admin\\ProductController@destroy', ['product' => $product]) }}">
                                         <button type="submit" class="btn btn-danger">Sil</button>
                                     </form>
                                 </th>

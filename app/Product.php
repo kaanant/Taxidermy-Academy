@@ -10,9 +10,7 @@ class Product extends Model
         'name',
         'price',
         'stock',
-
     ];
-
 
     /**
      * @return mixed
@@ -21,5 +19,9 @@ class Product extends Model
         $category = Category::find($this->category_id);
 
         return $category->name;
+    }
+
+    public function orders(){
+        return $this->belongsToMany(Order::class);
     }
 }

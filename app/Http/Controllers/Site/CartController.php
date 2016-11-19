@@ -15,42 +15,30 @@ class CartController extends Controller
         if(!session('cart')){
             session(['cart' => []]);
         }
+        $cart = session()->get('cart');
 
-        if($request->get('status') == 'add') {
-            session()->push('cart',['id' => $product->id, 'cost' => $product->discount]);
+        if($request->get('status') == 'add')
+        {
+            if( isset($cart[$product->id])){
+                $cart[$product->id]['count']++;
+            }else{
+                $cart[$product->id]  = ['cost' => $product->discount ,'count'=>1];
+            }
         } else {
-            $cart = session('cart');
-            $i = 0;
-            while ($i < count($cart) && $cart[$i]['id'] != $product->id) {
-                $i++;
-            }
-
-            if ($i < count($cart)) {
-                array_splice($cart, $i, 1);
-                session(['cart' => $cart]);
-            }
+            array_forget($cart,$product->id);
         }
-
-        $cost = array_sum(array_map(function($item){
-            return (float) $item['cost'];
-        }, session('cart')));
-
-        return ['count' => count(session('cart')), 'total_cost' => $cost];
+        session()->put('cart',$cart);
+        $cost= 0;
+        $count = 0;
+        foreach ($cart as $product){
+            $cost += $product['cost'];
+            $count += $product['count'];
+        }
+        return ['count' => $count, 'total_cost' => $cost];
     }
 
     function showcart(Product $productmodel){
-
-        $cartdetail = session('cart') ?: [];
-        $productIds = [];
-
-        foreach ($cartdetail as $product){
-            if(!array_key_exists($product['id'], $productIds)) {
-                $productIds[$product['id']] = 0;
-            }
-            $productIds[$product['id']] += 1;
-        }
-
-        $productList = $productmodel->whereIn('id', array_keys($productIds))->get();
-        return view('site/cart', compact('productList', 'productIds'));
+        $productList = $productmodel->whereIn('id', array_keys(session('cart')))->get();
+        return view('site/cart', compact('productList'));
     }
 }

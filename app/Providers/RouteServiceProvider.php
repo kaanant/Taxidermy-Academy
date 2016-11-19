@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         Route::bind('product', function ($value) {
-            $product = Product::where('id', $value)->where('status', true)->first();
+            $product = Product::where('id', $value)->first();
 
             if (!$product) {
                 abort(404);

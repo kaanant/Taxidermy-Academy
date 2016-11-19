@@ -37,7 +37,7 @@ class AuthController extends Controller
         }
 
         auth()->login($user);
-        $addressModel->address = $request->address;
+        $addressModel->address = $request->get('address');
         $addressModel->user_id = $request->user()->id;
         $addressModel->save();
         
