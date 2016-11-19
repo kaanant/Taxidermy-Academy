@@ -51,7 +51,8 @@ class OrderController extends Controller
             'delivery_type' =>$request->get('delivery'),
             'user_id'=> $request->user()->id,
             'shipment_address_id'=>$address_id,
-            'billing_address_id'=>$address_id
+            'billing_address_id'=>$address_id,
+            'status'=> 'Beklemede'
         ]);
 
 

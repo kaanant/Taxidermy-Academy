@@ -23,6 +23,7 @@ class CreateOrderTable extends Migration
             $table->string('shipment_phone');
             $table->string('shipment_user');
             $table->string('delivery_type');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
