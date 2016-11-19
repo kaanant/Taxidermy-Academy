@@ -17,6 +17,6 @@ class Order extends Model
         'billing_address_id'
     ];
     public function products(){
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('product_count')->withTimestamps();
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Order;
 use App\User;
-use Faker\Provider\Address;
+use App\Address;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -35,10 +35,10 @@ class OrderController extends Controller
         }
 
         if ($request->get('address') == "new_address") {
-            $addressModel->address = $request->get('address');
-            $addressModel->user_id = $request->user()->id;
-            $addressModel->save();
-            $address_id = $addressModel->id();
+            $address_id = Address::create([
+                'address' => $request->get('new_address'),
+                'user_id' => $request->user()->id
+            ])->id;
         } else {
             $address_id = $request->get('address');
         }
@@ -54,14 +54,12 @@ class OrderController extends Controller
             'billing_address_id'=>$address_id
         ]);
 
-        foreach ($cart as $key => $product) {
-            $orderModel->products()->create([
-                'product_id' => $key,
-                'product_count' => $product['count']
-            ]);
-        }
 
-        return 0;
+        foreach ($cart as $key => $product) {
+            $orderModel->products()->attach($key,['product_count'=>$product['count']]);
+        }
+        session()->put('cart',[]);
+        return redirect(action("Site\\IndexController@index"));
     }
 
 }

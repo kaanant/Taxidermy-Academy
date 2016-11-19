@@ -93,7 +93,7 @@
                                            value="new_address">
                                     Yeni Adres
                                 </label>
-                                <textarea placeholder="Adres" id="new_address" name="new_adress"
+                                <textarea placeholder="Adres" id="new_address" name="new_address"
                                           class="col-md-1"></textarea>
                             </div>
                         </div>
