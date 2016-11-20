@@ -25,32 +25,32 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Ürün Adı</label>
-                                <input class="form-control" name="name">
+                                <input class="form-control" name="name" >
                             </div>
 
                             <div class="form-group">
                                 <label>Ürün Key</label>
-                                <input class="form-control" name="key">
+                                <input class="form-control" name="key" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Fiyatı</label>
-                                <input class="form-control" name="price">
+                                <input class="form-control" name="price" required>
                             </div>
 
                             <div class="form-group">
                                 <label>İndirimli Fiyatı</label>
-                                <input class="form-control" name="discount" >
+                                <input class="form-control" name="discount" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Miktar</label>
-                                <input class="form-control" name="stock">
+                                <input class="form-control" name="stock" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Marka</label>
-                                <input class="form-control" name="brand">
+                                <input class="form-control" name="brand" required>
                             </div>
 
                             <div class="form-group">

@@ -36,14 +36,10 @@
                             <th>{{ $category->id  }}</th>
                             <th>{{ $category->name }}</th>
                             <th>
-                                <form method="edit" action="{{ action('Admin\\CategoryController@edit', ['category' => $category]) }}">
-                                    <button type="submit" class="btn btn-default">Düzenle</button>
-                                </form>
+                                <a href="{{ action('Admin\\CategoryController@edit', ['category' => $category]) }}" class="btn btn-default">Düzenle</a>
                             </th>
                             <th>
-                                <form method="delete" action="{{ action('Admin\\CategoryController@destroy', ['category' => $category]) }}">
-                                    <button type="submit" class="btn btn-danger">Sil</button>
-                                </form>
+                                <a data-url="{{ action('Admin\\CategoryController@destroy', ['category' => $category]) }}" class="btn btn-danger removeCategory">Sil</a>
                             </th>
                         </tr>
                     @endforeach
@@ -52,8 +48,72 @@
             </div>
         </div>
     </div>
-
-
-
+</div>
 
 @stop
+
+@section('scripts')
+
+<script src="/js/bootbox.min.js"></script>
+<script src="/js/bootstrap-notify.min.js"></script>
+
+<script>
+
+    $('body').on('click', '.removeCategory4', function(){
+        var url = $(this).attr('data-url');
+        var $tr = $(this).parents('tr');
+        bootbox.confirm({
+            message: "Ürünü silmek istediğinize emin misiniz?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Vazgeç'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Onayla'
+                }
+            },
+            callback: function (result) {
+                if(!result){
+                    return;
+                }
+                $.ajax({
+                    'url': url,
+                    'type': 'DELETE',
+                    'dataType': 'JSON',
+                    'success': function(result){
+
+                        var message='Silme işlemi başarılı';
+                        var status='success';
+
+                        if(result.err){
+                            //return bootbox.alert("Silme işlemi başarısız!");
+                            message = "Silme işlemi başarısız";
+                            status = 'danger';
+                        }
+
+                        $tr.animate('').remove();
+                        $.notify({
+
+                            message: message
+                        }, {
+                            delay: 3000,
+                            type: status,
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    })
+
+</script>
+
+@endsection

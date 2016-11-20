@@ -12,7 +12,8 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"></h1>
+            <h4 class="page-header">Ürün Ara</h4>
+            
         </div>
     </div><!--/.row-->
 
@@ -21,11 +22,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Ürünler
-                    <div class="col-md-2">
-                        <form action="{{ action('Admin\ProductController@create') }}">
-                            <button type="submit" class="btn btn-primary" >Yeni Ürün</button>
-                        </form>
-                    </div>
+                        <a href="{{ action('Admin\\ProductController@create') }}" class="btn btn-primary pull-right">Yeni Ürün</a>
                 </div>
                 <div class="panel panel-body">
                     <table class="table table-striped">
@@ -42,34 +39,95 @@
                         </thead>
                         <tbody>
                         @foreach ($products as $product)
-                            <tr>
+                            <tr id="product_{{ $product->id }}">
                                 <th>{{ $product->name  }}</th>
                                 <th>{{ $product->price  }}</th>
                                 <th>{{ $product->stock }}</th>
-                                <th>{{ $product->getCategoryName()  }}</th>
+                                <th>{{ $product->category->name  }}</th>
                                 <th>{{ $product->brand  }}</th>
                                 <th>{{ $product->status  }}</th>
                                 <th>
                                     <a href="{{ action('Admin\\ProductController@edit', ['product' => $product]) }}" class="btn btn-default">Düzenle</a>
                                 </th>
                                 <th>
-                                    <form method="POST" action="{{ action('Admin\\ProductController@destroy', ['product' => $product]) }}">
-                                        <button type="submit" class="btn btn-danger">Sil</button>
-                                    </form>
+                                    <a data-url="{{ action('Admin\\ProductController@destroy', ['product' => $product]) }}" class="btn btn-danger removeProduct">Sil</a>
                                 </th>
                             </tr>
                         @endforeach
                         </tbody>
+
                     </table>
+                    <ul class="pull-right">{{ $products->render() }}</ul>
                 </div>
+            </div>
         </div>
     </div>
-
 @stop
 
 
 @section('scripts')
 
 <script src="/js/bootstrap-table.js"></script>
+<script src="/js/bootbox.min.js"></script>
+<script src="/js/bootstrap-notify.min.js"></script>
+
+<script>
+
+    $('body').on('click', '.removeProduct', function(){
+        var url = $(this).attr('data-url');
+        var $tr = $(this).parents('tr');
+        bootbox.confirm({
+            message: "Ürünü silmek istediğinize emin misiniz?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Vazgeç'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Onayla'
+                }
+            },
+            callback: function (result) {
+                if(!result){
+                    return;
+                }
+                $.ajax({
+                    'url': url,
+                    'type': 'DELETE',
+                    'dataType': 'JSON',
+                    'success': function(result){
+
+                        var message='Silme işlemi başarılı';
+                        var status='success';
+
+                        if(result.err){
+                            //return bootbox.alert("Silme işlemi başarısız!");
+                            message = "Silme işlemi başarısız";
+                            status = 'danger';
+                        }
+
+                        $tr.animate('').remove();
+                        $.notify({
+
+                            message: message
+                        }, {
+                            delay: 3000,
+                            type: status,
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    })
+
+</script>
 
 @stop

@@ -10,15 +10,19 @@ class Product extends Model
         'name',
         'price',
         'stock',
+        'discount',
+        'product_key',
+        'stock',
+        'brand',
+        'category_id',
+        'quality'
     ];
 
     /**
      * @return mixed
      */
-    public function getCategoryName(){
-        $category = Category::find($this->category_id);
-
-        return $category->name;
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
     public function orders(){

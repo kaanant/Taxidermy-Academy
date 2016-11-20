@@ -21,36 +21,37 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="POST" action="{{ action('Admin\ProductController@update') }}">
+                        <form role="form" method="post" action="{{ action('Admin\\ProductController@update', ['product' => $product]) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_method" value="put" />
                             <div class="form-group">
                                 <label>Ürün Adı</label>
-                                <input class="form-control" name="name" value="{{ $product->name }}">
+                                <input class="form-control" name="name" value="{{ old('name', $product->name) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Fiyatı</label>
-                                <input class="form-control" name="price" value="{{ $product->price }}">
+                                <input class="form-control" name="price" value="{{ old('price', $product->price) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>İndirimli Fiyatı</label>
-                                <input class="form-control" name="discount" value="{{ $product->discount }}">
+                                <input class="form-control" name="discount" value="{{ old('discount', $product->discount) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Miktar</label>
-                                <input class="form-control" name="stock" value="{{ $product->stock }}">
+                                <input class="form-control" name="stock" value="{{ old('stock', $product->stock) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Marka</label>
-                                <input class="form-control" name="brand" value="{{ $product->brand }}">
+                                <input class="form-control" name="brand" value="{{ old('brand', $product->brand) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Kalite</label>
-                                <select class="form-control" name="quality" value="{{ $product->quality }}">
+                                <select class="form-control" name="quality" value="{{ old('quality', $product->quality) }}">
                                     <option>Yüksek</option>
                                     <option>Orta</option>
                                     <option>Düşük</option>
@@ -61,7 +62,7 @@
                                 <label>Kategori</label>
                                 <select class="form-control" name="category">
                                     @foreach($categories as $category)
-                                        <option selected={{ $product->category_id }}>{{ $category->name }}</option>
+                                        <option selected={{ old('cateegory_id', $product->category_id) }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

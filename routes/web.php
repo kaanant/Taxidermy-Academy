@@ -20,8 +20,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/admin/orders', 'OrderController@index');
     Route::get('/admin/logout', 'AuthController@logout');
 
-    Route::resource('/admin/categories', 'CategoryController');
-    Route::resource('/admin/products', 'ProductController');
+    Route::resource('/admin/categories', 'CategoryController', ['except' => 'show']);
+    Route::resource('/admin/products', 'ProductController', ['except' => 'show']);
 
     /*Route::get('/admin/test','AlbumController@getAlbumList');
     Route::get('/admin/createalbum', 'AlbumController@getForm');

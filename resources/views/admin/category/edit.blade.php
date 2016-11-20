@@ -21,16 +21,17 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="POST" action="{{ action('Admin\CategoryController@update') }}">
+                        <form role="form" method="post" action="{{ action('Admin\CategoryController@update', ['category' => $category]) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_method" value="put" />
                             <div class="form-group">
                                 <label>Kategori Adı</label>
-                                <input class="form-control" name="name" value="{{ $category->name }}">
+                                <input class="form-control" name="name" value="{{ old('name', $category->name) }}">
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group col-md-3">
-                                    <button type="submit "class="btn btn-block btn-primary">Onayla</button>
+                                    <button type="submit " class="btn btn-block btn-primary">Onayla</button>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <button type="reset" class="btn btn-block btn-default">Temizle</button>

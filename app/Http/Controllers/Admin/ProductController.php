@@ -16,18 +16,27 @@ class ProductController extends Controller
         return view('admin.product.create', ['categories' => $categories->all()]);
     }
 
-    function store(Request $request, Product $product){
-        $product->name = $request->get('name');
-        $product->price = $request['price'];
-        $product->discount = $request['discount'];
-        $product->stock = $request['stock'];
-        $product->product_key = $request['key'];
-        $product->brand = $request['brand'];
-        $product->product_quality = $request['quality'];
-        $product->category_id = $request['category'];
-        //dd($product);
-        $product->save();
+    function store(Request $request){
+        if (!Product::create($request->all())) {
+            return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
+        }
+
         return redirect('admin/product/index');
+    }
+
+    function update(Request $request){
+        // validate
+
+        // Control success
+        if (!Product::create($request->all())) {
+          return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
+        }
+
+        return redirect('admin/product/index');
+    }
+
+    function show(){
+        return view('admin/products/index');
     }
 
     function edit(Product $product, Category $categories){
@@ -37,12 +46,14 @@ class ProductController extends Controller
 
     function destroy(Product $product){
         //dd($product);
-        $product->delete();
-        return redirect('admin/product/index');
+        if(!$product->delete()){
+            return ['err' => 1];
+        }
+        return ['err' => 0];
     }
 
 
     function index(Product $product){
-        return view('admin.product.index', ['products' => $product->all()]);
+        return view('admin.product.index', ['products' => $product->paginate(10)]);
     }
 }
