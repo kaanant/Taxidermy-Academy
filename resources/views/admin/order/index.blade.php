@@ -19,13 +19,7 @@
         <!-- Table -->
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Ürünler
-                    <div class="col-md-2">
-                        <form action="{{ action('Admin\ProductController@create') }}">
-                            <button type="submit" class="btn btn-primary" >Yeni Ürün</button>
-                        </form>
-                    </div>
-                </div>
+                <div class="panel-heading">Siparişler</div>
                 <div class="panel panel-body">
                     <table class="table table-striped col-md-12">
                         <thead>

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     function index(Category $category){
-        return view('admin.category.index', ['categories' => $category->all()]);
+        return view('admin.category.index', ['categories' => $category->orderBy('name')->get()]);
     }
 
     function store(Category $category, Request $request){
@@ -19,20 +19,16 @@ class CategoryController extends Controller
         if(!$category->save()){
             return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
         }
-        return redirect('admin/categories/index');
+        return redirect('admin/categories');
     }
 
-    function show(){
-        return redirect('admin/categories/index');
-    }
 
     function update(Category $category, Request $request){
-        $category->id = $request->id;
         $category->name = $request->name;
         if(!$category->save()){
             return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
         }
-        return redirect('admin/categories/index');
+        return redirect('admin/categories');
     }
 
     function destroy(Category $category){

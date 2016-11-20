@@ -19,7 +19,7 @@ class AuthController extends Controller
             'email' =>'required|email',
             'password'=>'required|min:3'
         ])){
-            return redirect()->back()->withErrors('Hatalı giriş');
+            return redirect()->back()->withErrors('Hatalı giriş!');
         }
 
         $user = $userModel->where('email', $request->get('email'))->first();
@@ -29,14 +29,9 @@ class AuthController extends Controller
                 Auth::login($user);
                 return redirect(action("Admin\\DashController@index"));
             }
-            else{
-                return redirect()->back()->withErrors('Kullanıcı yetkili değil!');
-            }
+            return redirect()->back()->withErrors('Kullanıcı yetkili değil!');
         }
-        else
-        {
-            return redirect()->back()->withErrors('Hatalı e-posta veya şifre!');
-        }
+        return redirect()->back()->withErrors('Hatalı e-posta veya şifre!');
     }
 
     function logout(){

@@ -34,8 +34,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'price' => $faker->numberBetween(50,200),
         'stock'=>$faker->numberBetween(0,5),
         'discount' =>$faker->numberBetween(0,100),
-        'product_quality' => $faker->numberBetween(1,3),
-        'product_key' =>$faker->unique()->jobTitle(),
+        'quality' => $faker->numberBetween(1,3),
         'brand' =>$faker->company,
         'category_id'=>$faker->numberBetween(1,5)
     ];

@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/admin/index', 'DashController@index');
     Route::get('/admin/orders', 'OrderController@index');
     Route::get('/admin/logout', 'AuthController@logout');
+    Route::get('/admin/products/search', 'ProductController@search');
 
     Route::resource('/admin/categories', 'CategoryController', ['except' => 'show']);
     Route::resource('/admin/products', 'ProductController', ['except' => 'show']);

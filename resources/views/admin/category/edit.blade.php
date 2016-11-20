@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="{{ action('Admin\DashController@index') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
             <li><a href="{{ action('Admin\CategoryController@index') }}">Kategoriler</a></li>
-            <li class="active">Kategori Düzenlen</li>
+            <li class="active">Kategori Düzenle</li>
         </ol>
     </div><!--/.row-->
 
@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="post" action="{{ action('Admin\CategoryController@update', ['category' => $category]) }}">
+                        <form role="form" method="post" action="{{ action('Admin\\CategoryController@update', ['category' => $category]) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="put" />
                             <div class="form-group">

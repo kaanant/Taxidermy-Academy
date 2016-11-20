@@ -20,8 +20,7 @@ class CreateProductTable extends Migration
             $table->double('price');
             $table->integer('stock');
             $table->double('discount');
-            $table->string('product_key')->unique();
-            $table->string('product_quality');
+            $table->string('quality');
             $table->string('brand');
             $table->string('category_id');
             $table->timestamps();

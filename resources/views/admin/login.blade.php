@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forms</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles2.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles2.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
-    <script src="js/lumino.glyphs.js"></script>
+    <script src="/js/lumino.glyphs.js"></script>
 
 </head>
 
@@ -29,10 +29,10 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Şifre" name="password" type="password" value="">
+                            <input class="form-control" placeholder="Şifre" name="password" type="password" value="" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Giriş Yap</button>
                     </fieldset>
@@ -44,10 +44,10 @@
 
 
 
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/easypiechart.js"></script>
-<script src="js/easypiechart-data.js"></script>
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/easypiechart.js"></script>
+<script src="/js/easypiechart-data.js"></script>
 
 </body>
 

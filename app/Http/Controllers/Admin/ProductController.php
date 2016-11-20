@@ -17,6 +17,18 @@ class ProductController extends Controller
     }
 
     function store(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required',
+            'brand' => 'required',
+            'quality' => 'required',
+            'price' => 'required',
+            'discount' => 'required',
+            'category_id' => 'required',
+            'stock' => 'required',
+            'status' => 'required'
+        ]);
+
         if (!Product::create($request->all())) {
             return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
         }
@@ -24,20 +36,26 @@ class ProductController extends Controller
         return redirect('admin/product/index');
     }
 
-    function update(Request $request){
-        // validate
+    function update(Product $product, Request $request){
 
-        // Control success
-        if (!Product::create($request->all())) {
+        //dd($request->get('category_id'));
+        $product->name = $request->name;
+        $product->brand = $request->brand;
+        $product->quality = $request->quality;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->category_id = $request->category_id;
+        $product->stock = $request->stock;
+        $product->status = $request->status;
+
+
+        if (!$product->save()) {
           return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
         }
 
-        return redirect('admin/product/index');
+        return redirect('admin/products');
     }
 
-    function show(){
-        return view('admin/products/index');
-    }
 
     function edit(Product $product, Category $categories){
         //dd($product);
@@ -50,6 +68,18 @@ class ProductController extends Controller
             return ['err' => 1];
         }
         return ['err' => 0];
+    }
+
+    function search(Request $request){
+        $option = $request->get('option');
+        $value = $request->value;
+        if($option == 'category'){
+            $value = Category::where('name', 'like', '%'.$value.'%')->pluck('id');
+            $product = Product::whereIn(['category_id' => $value]);
+        }else {
+            $product = Product::where($option, 'like', '%'.$value.'%');
+        }
+        return view('admin.product.index', ['products' => $product->orderBy('name')->paginate(10)]);
     }
 
 

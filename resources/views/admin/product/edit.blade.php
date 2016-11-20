@@ -51,19 +51,26 @@
 
                             <div class="form-group">
                                 <label>Kalite</label>
-                                <select class="form-control" name="quality" value="{{ old('quality', $product->quality) }}">
-                                    <option>Yüksek</option>
-                                    <option>Orta</option>
-                                    <option>Düşük</option>
+                                <select class="form-control" name="quality" value="{{ $product->quality }}">
+                                    <option {{ $product->quaility == '1' ? 'selected' : '' }}>Yüksek</option>
+                                    <option {{ $product->quaility == '2' ? 'selected' : '' }}>Orta</option>
+                                    <option {{ $product->quaility == '3' ? 'selected' : '' }}>Düşük</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label>Kategori</label>
-                                <select class="form-control" name="category">
+                                <select class="form-control" name="category_id">
                                     @foreach($categories as $category)
-                                        <option selected={{ old('cateegory_id', $product->category_id) }}>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected': '' }}>{{ $category->name }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Durum</label>
+                                <select class="form-control" name="status" value="{{ $product->quality }}">
+                                    <option value="1" {{ $product->status ? 'selected' : '' }}>Aktif</option>
+                                    <option value="0" {{ !$product->status ? 'selected' : '' }}>Pasif</option>
                                 </select>
                             </div>
                             <div class="col-md-6">

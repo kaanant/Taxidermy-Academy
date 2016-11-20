@@ -21,16 +21,11 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="POST" action="{{ action('Admin\ProductController@store') }}">
+                        <form role="form" method="POST" data-url="{{ action('Admin\ProductController@store') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Ürün Adı</label>
-                                <input class="form-control" name="name" >
-                            </div>
-
-                            <div class="form-group">
-                                <label>Ürün Key</label>
-                                <input class="form-control" name="key" required>
+                                <input class="form-control" name="name" required="required">
                             </div>
 
                             <div class="form-group">
@@ -72,7 +67,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group col-md-3">
-                                    <button type="submit "class="btn btn-block btn-primary">Onayla</button>
+                                    <button type="submit" class="btn btn-block btn-primary createProduct">Onayla</button>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <button type="reset" class="btn btn-block btn-default">Temizle</button>
@@ -88,4 +83,54 @@
 
 @section('scripts')
     <script src="/js/jquery-validate/jquery.validate.min.js"></script>
+
+    <script>
+
+        $.('body').on('click', '.createProduct', function () {
+            var url = $(this).attr('data-url');
+            $.ajax({
+                'url': url,
+                'type': 'post',
+                'dataType': JSON,
+                'success': function(){
+
+                    $.notify({
+
+                        message: 'Ürün başarıyla eklendi'
+                    }, {
+                        delay: 3000,
+                        type: status,
+                        allow_dismiss: false,
+                        placement: {
+                            from: "top",
+                            align: "center"
+                        },
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        }
+                    });
+                },
+                'error': function (result) {
+                    $.notify({
+                        'message': 'Ürün ekleme başarısız!'
+                    }, {
+                        delay: 3000,
+                        type: status,
+                        allow_dismiss: false,
+                        placement: {
+                            from: "top",
+                            align: "center"
+                        },
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        }
+                    });
+                }
+            });
+        })
+
+    </script>
+
 @stop

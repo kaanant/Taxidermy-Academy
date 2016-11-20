@@ -12,9 +12,26 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h4 class="page-header">Ürün Ara</h4>
-            
-        </div>
+            <h1 class="page-header"></h1>
+            <div class="">
+                <form role="search" method="get" action="{{ action('Admin\\ProductController@search') }}">
+                    <div class="form-group col-lg-2">
+                        <select name="option" class="form-control">
+                            <option value="name">Ürün Adı</option>
+                            <option value="category">Kategori</option>
+                            <option value="brand">Marka</option>
+                            <option value="price">Fiyat</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <input type="text" name="value" class="form-control" placeholder="Ürün ara">
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <button type="submit" class="btn btn-default col-md-12" >Ara</button>
+                    </div>
+                </form>
+            </div>
+            </div>
     </div><!--/.row-->
 
     <div class="row">
@@ -57,7 +74,7 @@
                         </tbody>
 
                     </table>
-                    <ul class="pull-right">{{ $products->render() }}</ul>
+                    <ul class="pull-right">{{ $products->appends($request->only('option', 'value'))->render() }}</ul>
                 </div>
             </div>
         </div>

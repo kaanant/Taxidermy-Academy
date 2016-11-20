@@ -25,15 +25,15 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Kategori ID</th>
+                        <th>#</th>
                         <th>Kategori Adı</th>
                         <th>İşlemler</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($categories as $index=>$category)
                         <tr>
-                            <th>{{ $category->id  }}</th>
+                            <th>{{ $index+1 }}</th>
                             <th>{{ $category->name }}</th>
                             <th>
                                 <a href="{{ action('Admin\\CategoryController@edit', ['category' => $category]) }}" class="btn btn-default">Düzenle</a>
@@ -59,7 +59,7 @@
 
 <script>
 
-    $('body').on('click', '.removeCategory4', function(){
+    $('body').on('click', '.removeCategory', function(){
         var url = $(this).attr('data-url');
         var $tr = $(this).parents('tr');
         bootbox.confirm({
