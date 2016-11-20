@@ -85,8 +85,6 @@
 @section('scripts')
 
 <script src="/js/bootstrap-table.js"></script>
-<script src="/js/bootbox.min.js"></script>
-<script src="/js/bootstrap-notify.min.js"></script>
 
 <script>
 

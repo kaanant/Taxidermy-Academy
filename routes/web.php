@@ -24,11 +24,14 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::resource('/admin/categories', 'CategoryController', ['except' => 'show']);
     Route::resource('/admin/products', 'ProductController', ['except' => 'show']);
 
-    /*Route::get('/admin/test','AlbumController@getAlbumList');
-    Route::get('/admin/createalbum', 'AlbumController@getForm');
-    Route::post('/createalbum', 'AlbumController@postCreate');
-    Route::get('/deletealbum/{id}', 'AlbumController@getDelete');
-    Route::get('/album/{id}','AlbumController@getAnAlbum');*/
+    Route::get('/admin/gallery/showalbumlist','AlbumController@getList');
+    Route::post('/admin/gallery/createalbum','AlbumController@postCreate');
+    Route::get('/admin/gallery/deletealbum/{id}', 'AlbumController@getDelete');
+    Route::delete('/admin/gallery/deletealbum/{id}', 'AlbumController@getDelete');
+    Route::get('/admin/gallery/album/{id}','AlbumController@getAlbum');
+    Route::get('/admin/gallery/addimage/{id}', 'ImageController@getForm');
+    Route::post('/admin/gallery/addimage', 'ImageController@postAdd');
+    Route::delete('/admin/gallery/deleteimage/{id}','ImageController@getDelete');
 
 
 });

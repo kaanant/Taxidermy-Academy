@@ -56,7 +56,7 @@
         <li class="{{ setActive('admin/products', $request) }}"><a href="{{ action("Admin\\ProductController@index") }}"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Ürünler</a></li>
         <li class="{{ setActive('admin/orders', $request) }}"><a href="{{ action("Admin\\OrderController@index") }}"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Siparişler</a></li>
         <li class="{{ setActive('admin/categories', $request) }}"><a href="{{ action("Admin\\CategoryController@index") }}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg> Kategoriler</a></li>
-        <li ><a href="/galery"><svg class="glyph stroked camera"><use xlink:href="#stroked-camera"></use></svg> Galeri</a></li>
+        <li ><a href="{{action('Admin\\AlbumController@getList')}}"><svg class="glyph stroked camera"><use xlink:href="#stroked-camera"></use></svg> Galeri</a></li>
     </ul>
 
 </div><!--/.sidebar-->
@@ -70,7 +70,11 @@
 
 
 <script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/jquery.form.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootbox.min.js"></script>
+<script src="/js/bootstrap-notify.min.js"></script>
+
 <script>
     $.ajaxSetup({
         headers: {
