@@ -31,7 +31,7 @@ class OrderController extends Controller
 
         $totalprice = 0;
         foreach ($cart as $product) {
-            $totalprice += $product['cost'];
+            $totalprice += $product['cost']*$product['count'];
         }
 
         if ($request->get('address') == "new_address") {

@@ -78,7 +78,7 @@
                                 exit: 'animated fadeOutUp'
                             }
                         });
-                    }else{
+                    }else if (status == "remove" ){
                         $.notify({
 
                             message: 'Ürün sepetinizden silindi'

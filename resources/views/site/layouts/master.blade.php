@@ -29,7 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </a>
                     <p>
                         <a href="javascript:;" class="simpleCart_empty">
-                            Sepette <span id="aCartCount">{{ session('cart') ? count(session('cart')) : 0 }}</span> ürün var.
+                            Sepette <span id="aCartCount">{{ $cartCount}}</span> ürün var.
                         </a>
                     </p>
                     <div class="clearfix"></div>

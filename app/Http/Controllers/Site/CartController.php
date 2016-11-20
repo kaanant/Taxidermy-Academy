@@ -19,7 +19,7 @@ class CartController extends Controller
 
         if($request->get('status') == 'add')
         {
-            if( isset($cart[$product->id])){
+            if(isset($cart[$product->id])){
                 $cart[$product->id]['count']++;
             }else{
                 $cart[$product->id]  = ['cost' => $product->discount ,'count'=>1];
@@ -31,8 +31,8 @@ class CartController extends Controller
         $cost= 0;
         $count = 0;
         foreach ($cart as $product){
-            $cost += $product['cost'];
             $count += $product['count'];
+            $cost += $product['count'] * $product['cost'];
         }
         return ['count' => $count, 'total_cost' => $cost];
     }
