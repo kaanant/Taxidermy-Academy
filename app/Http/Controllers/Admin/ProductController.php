@@ -22,16 +22,15 @@ class ProductController extends Controller
             'quality' => 'required',
             'price' => 'required',
             'discount' => 'required',
-            'category_id' => 'required',
             'stock' => 'required',
             'status' => 'required'
         ]);
-
+        //dd($request);
         if (!Product::create($request->all())) {
-            return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
+            return ['err' => 1];
         }
 
-        return redirect('admin/product/index');
+        return ['err' => 0];
     }
 
     function update(Product $product, Request $request){
@@ -48,10 +47,10 @@ class ProductController extends Controller
 
 
         if (!$product->save()) {
-          return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
+          return ['err' => 1];
         }
 
-        return redirect('admin/products');
+        return ['err' => 0];
     }
 
 

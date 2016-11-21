@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="POST" data-url="{{ action('Admin\ProductController@store') }}">
+                        <form role="form" method="POST" action="{{ action('Admin\ProductController@store') }}" id="createProduct">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Ürün Adı</label>
@@ -59,18 +59,27 @@
 
                             <div class="form-group">
                                 <label>Kategori</label>
-                                <select class="form-control" name="category">
+                                <select class="form-control" name="category_id">
                                     @foreach($categories as $category)
-                                        <option>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group col-md-3">
-                                    <button type="submit" class="btn btn-block btn-primary createProduct">Onayla</button>
-                                </div>
-                                <div class="form-group col-md-3">
+
+                            <div class="form-group">
+                                <label>Durum</label>
+                                <select class="form-control" name="status">
+                                    <option value="1" selected>Aktif</option>
+                                    <option value="0">Pasif</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-group col-md-6 pull right">
                                     <button type="reset" class="btn btn-block btn-default">Temizle</button>
+                                </div>
+                                <div class="form-group col-md-6 pull right">
+                                    <button type="submit" class="btn btn-block btn-primary">Onayla</button>
                                 </div>
                             </div>
                         </form>
@@ -86,50 +95,50 @@
 
     <script>
 
-        $.('body').on('click', '.createProduct', function () {
-            var url = $(this).attr('data-url');
-            $.ajax({
-                'url': url,
-                'type': 'post',
-                'dataType': JSON,
-                'success': function(){
-
-                    $.notify({
-
-                        message: 'Ürün başarıyla eklendi'
-                    }, {
-                        delay: 3000,
-                        type: status,
-                        allow_dismiss: false,
-                        placement: {
-                            from: "top",
-                            align: "center"
-                        },
-                        animate: {
-                            enter: 'animated fadeInDown',
-                            exit: 'animated fadeOutUp'
+        $(function(){
+            $('#createProduct').submit(function(e){
+                e.preventDefault();
+                $(this).ajaxSubmit({
+                    dataType: 'JSON',
+                    success: function(resp) {
+                        if (resp.err) {
+                            return $.notify({
+                                message: "Ürün Oluşturma Başarısız!"
+                            }, {
+                                delay: 3000,
+                                type: 'danger',
+                                allow_dismiss: false,
+                                placement: {
+                                    from: "top",
+                                    align: "center"
+                                },
+                                animate: {
+                                    enter: 'animated fadeInDown',
+                                    exit: 'animated fadeOutUp'
+                                }
+                            });
                         }
-                    });
-                },
-                'error': function (result) {
-                    $.notify({
-                        'message': 'Ürün ekleme başarısız!'
-                    }, {
-                        delay: 3000,
-                        type: status,
-                        allow_dismiss: false,
-                        placement: {
-                            from: "top",
-                            align: "center"
-                        },
-                        animate: {
-                            enter: 'animated fadeInDown',
-                            exit: 'animated fadeOutUp'
-                        }
-                    });
-                }
+                        return $.notify({
+                            message: "Ürün Başarıyla Oluşturuldu"
+                        }, {
+                            delay: 3000,
+                            type: 'success',
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                        window.location.reload();
+                    },
+                });
+
             });
-        })
+        });
 
     </script>
 

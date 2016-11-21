@@ -21,19 +21,19 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="POST" action="{{ action('Admin\CategoryController@store') }}">
+                        <form role="form" id="createCategory" method="POST" action="{{ action('Admin\CategoryController@store') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Kategori Adı</label>
                                 <input class="form-control" name="name">
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group col-md-3">
-                                    <button type="submit "class="btn btn-block btn-primary">Onayla</button>
-                                </div>
-                                <div class="form-group col-md-3">
+                            <div class="form-group">
+                                <div class="form-group col-md-6 pull right">
                                     <button type="reset" class="btn btn-block btn-default">Temizle</button>
+                                </div>
+                                <div class="form-group col-md-6 pull right">
+                                    <button type="submit" class="btn btn-block btn-primary">Onayla</button>
                                 </div>
                             </div>
 
@@ -47,4 +47,54 @@
 
 @section('scripts')
     <script src="/js/jquery-validate/jquery.validate.min.js"></script>
+
+    <script>
+
+        $(function(){
+            $('#createCategory').submit(function(e){
+                e.preventDefault();
+                $(this).ajaxSubmit({
+                    dataType: 'JSON',
+                    success: function(resp) {
+                        if (resp.err) {
+                            return $.notify({
+                                message: "Kategori Oluşturma Başarısız!"
+                            }, {
+                                delay: 3000,
+                                type: 'danger',
+                                allow_dismiss: false,
+                                placement: {
+                                    from: "top",
+                                    align: "center"
+                                },
+                                animate: {
+                                    enter: 'animated fadeInDown',
+                                    exit: 'animated fadeOutUp'
+                                }
+                            });
+                        }
+                        return $.notify({
+                            message: "Kategori Başarıyla Oluşturuldu"
+                        }, {
+                            delay: 3000,
+                            type: 'success',
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                        window.location.reload();
+                    },
+                });
+
+            });
+        });
+
+    </script>
+
 @stop

@@ -17,18 +17,18 @@ class CategoryController extends Controller
     function store(Category $category, Request $request){
         $category->name = $request->name;
         if(!$category->save()){
-            return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
+            return ['err' => 1];
         }
-        return redirect('admin/categories');
+        return ['err' => 0];
     }
 
 
     function update(Category $category, Request $request){
         $category->name = $request->name;
         if(!$category->save()){
-            return redirect()->back()->withErrors('Kaydedilirken bir hata oluştu');
+            return ['err' => 1];
         }
-        return redirect('admin/categories');
+        return ['err' => 0];
     }
 
     function destroy(Category $category){
