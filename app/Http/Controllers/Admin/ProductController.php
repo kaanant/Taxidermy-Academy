@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
-
-
+    
     function create(Category $categories){
         return view('admin.product.create', ['categories' => $categories->all()]);
     }
