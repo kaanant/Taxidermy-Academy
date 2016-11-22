@@ -15,7 +15,8 @@ class Product extends Model
         'stock',
         'brand',
         'category_id',
-        'quality'
+        'quality',
+        'status'
     ];
 
     /**

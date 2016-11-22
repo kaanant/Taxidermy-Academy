@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="post" action="{{ action('Admin\\ProductController@update', ['product' => $product]) }}">
+                        <form role="form" method="post" id="editProduct" action="{{ action('Admin\\ProductController@update', ['product' => $product]) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="put" />
                             <div class="form-group">
@@ -73,12 +73,12 @@
                                     <option value="0" {{ !$product->status ? 'selected' : '' }}>Pasif</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group col-md-3">
-                                    <button type="submit "class="btn btn-block btn-primary">Onayla</button>
+                            <div class="form-group">
+                                <div class="form-group col-md-6 pull right">
+                                    <button type="reset" class="btn btn-block btn-default">Temizle</button>
                                 </div>
-                                <div class="form-group col-md-3">
-                                    <button type="reset" class="btn btn-block btn-default">Geri Al</button>
+                                <div class="form-group col-md-6 pull right">
+                                    <button type="submit" class="btn btn-block btn-primary">Onayla</button>
                                 </div>
                             </div>
                         </form>
@@ -91,4 +91,54 @@
 
 @section('scripts')
     <script src="/js/jquery-validate/jquery.validate.min.js"></script>
+
+    <script>
+
+        $(function(){
+            $('#editProduct').submit(function(e){
+                e.preventDefault();
+                $(this).ajaxSubmit({
+                    dataType: 'JSON',
+                    success: function(resp) {
+                        if (resp.err) {
+                            return $.notify({
+                                message: "Ürün Düzenleme Başarısız!"
+                            }, {
+                                delay: 3000,
+                                type: 'danger',
+                                allow_dismiss: false,
+                                placement: {
+                                    from: "top",
+                                    align: "center"
+                                },
+                                animate: {
+                                    enter: 'animated fadeInDown',
+                                    exit: 'animated fadeOutUp'
+                                }
+                            });
+                        }
+                        return $.notify({
+                            message: "Ürün Başarıyla Düzenlendi"
+                        }, {
+                            delay: 3000,
+                            type: 'success',
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                        window.location.reload();
+                    },
+                });
+
+            });
+        });
+
+    </script>
+
     @stop

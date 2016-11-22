@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <form role="form" method="post" action="{{ action('Admin\\CategoryController@update', ['category' => $category]) }}">
+                        <form role="form" id="editCategory" method="post" action="{{ action('Admin\\CategoryController@update', ['category' => $category]) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="put" />
                             <div class="form-group">
@@ -29,12 +29,12 @@
                                 <input class="form-control" name="name" value="{{ old('name', $category->name) }}">
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group col-md-3">
-                                    <button type="submit " class="btn btn-block btn-primary">Onayla</button>
-                                </div>
-                                <div class="form-group col-md-3">
+                            <div class="form-group">
+                                <div class="form-group col-md-6 pull right">
                                     <button type="reset" class="btn btn-block btn-default">Temizle</button>
+                                </div>
+                                <div class="form-group col-md-6 pull right">
+                                    <button type="submit" class="btn btn-block btn-primary">Onayla</button>
                                 </div>
                             </div>
 
@@ -48,4 +48,54 @@
 
 @section('scripts')
     <script src="/js/jquery-validate/jquery.validate.min.js"></script>
+
+    <script>
+
+        $(function(){
+            $('#editCategory').submit(function(e){
+                e.preventDefault();
+                $(this).ajaxSubmit({
+                    dataType: 'JSON',
+                    success: function(resp) {
+                        if (resp.err) {
+                            return $.notify({
+                                message: "Kategori Düzenleme Başarısız!"
+                            }, {
+                                delay: 3000,
+                                type: 'danger',
+                                allow_dismiss: false,
+                                placement: {
+                                    from: "top",
+                                    align: "center"
+                                },
+                                animate: {
+                                    enter: 'animated fadeInDown',
+                                    exit: 'animated fadeOutUp'
+                                }
+                            });
+                        }
+                        return $.notify({
+                            message: "Kategori Başarıyla Düzenlendi"
+                        }, {
+                            delay: 3000,
+                            type: 'success',
+                            allow_dismiss: false,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                            animate: {
+                                enter: 'animated fadeInDown',
+                                exit: 'animated fadeOutUp'
+                            }
+                        });
+                        window.location.reload();
+                    },
+                });
+
+            });
+        });
+
+    </script>
+
 @stop

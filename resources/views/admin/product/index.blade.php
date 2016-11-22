@@ -34,6 +34,8 @@
             </div>
     </div><!--/.row-->
 
+    <hr>
+
     <div class="row">
         <!-- Table -->
         <div class="col-md-12">
