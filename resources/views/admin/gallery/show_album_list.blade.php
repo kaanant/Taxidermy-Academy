@@ -4,8 +4,6 @@
     <style>
         .albumTrash {
             position: absolute;
-            left: 355px;
-            top: 12px;
             cursor: pointer;
         }
     </style>
@@ -27,26 +25,35 @@
     </div><!--/.row-->
 
     <div class="container">
-
-        <div class="row">
-            <div class="col-lg-11">
-                <h1 class="header">Albümler</h1>
-            </div>
-            <div class="col-lg-1">
-                <a style="position: relative; top:24px; left: -58px; border-radius: 100%" data-toggle="modal"
-                   data-target="#addAlbumModal" type="submit" class="btn pull-right btn-lg btn-info">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </a>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-11">
+                        <h1 class="header">Albümler</h1>
+                </div>
+                <div class="col-md-1">
+                    <div class="margin-top:20px" style="float:left">
+                        <a style="position: relative; border-radius: 100% "  data-toggle="modal"
+                           data-target="#addAlbumModal" type="submit" class="btn pull-right btn-lg btn-info">
+                            <i class="glyphicon glyphicon-plus margin-top:21px"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row">
             @foreach($albums as $album)
                 <div class="col-lg-4 col-md-4 col-xs-6 thumb">
-                    <h3 style="margin-top:5px;">{{$album->name}}</h3>
-                    <i onclick="show_notification('{{action("Admin\\AlbumController@getDelete",['id'=>$album->id])}}', this)"
-                       class="glyphicon glyphicon-trash albumTrash text-danger"></i>
-                    <a class="thumbnail" href="{{action("Admin\\AlbumController@getAlbum",["id"=>$album->id])}}">
+                    <div class="col-md-12" style="margin-top: 15px">
+                        <div class="col-md-10">
+                           <h3 style="margin-top:5px;">{{$album->name}}</h3>
+                        </div>
+                        <div class="col-md-2 " style="margin-top:8px;float: right" >
+                            <i onclick="show_notification('{{action("Admin\\AlbumController@getDelete",['id'=>$album->id])}}', this)"
+                               class="glyphicon glyphicon-trash albumTrash text-danger"></i>
+                        </div>
+                    </div>
+                    <a class="thumbnail" style="margin-top:50px" href="{{action("Admin\\AlbumController@getAlbum",["id"=>$album->id])}}">
                         <img class="img-responsive" src="/images/albums/{{$album->cover_image}}" alt="">
                     </a>
                     <h5>Açıklama:<br>{{$album->description}}</h5>
